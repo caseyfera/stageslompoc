@@ -6,8 +6,156 @@
 	<meta name="viewport">
 <meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
 
-<title>Stages Lompoc</title>
+<title>Stagers Lompoc</title>
+
+
 <style>
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+
+
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+
+body {background-color: #1d84d5}
+
+html {font-size: 62.5%;font-family: 'Roboto', sans-serif;}
+
+li {list-style: none;}
+
+a {text-decoration: none;}
+
+.header{border-bottom: 1px solid #E2E8F0;}
+
+.navbar {background: white; z-index: 5; width: 100%; position: fixed; display: flex;justify-content: space-between;align-items: center; padding: 1rem 1.5rem;}
+
+
+.hamburger {display: none;}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 5rem;
+}
+
+.nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
+}
+
+.nav-link:hover{
+    color: #482ff7;
+}
+
+.nav-logo {
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: #1d84d5;
+}
+
+@media only screen and (max-width: 870px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+
+
+// Inside the Media Query.
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+}
+
+table { border: 0px solid c}	
+	table tr {}
+	table tr th {border: 0px solid #AA2B2D}
+
+
+
+/* end of nav style */
+
+
+/*stages Logo*/
+	.logo {z-index: 0; text-align: center;
+text-shadow: 12px; position: relative; top: 0px; filter: drop-shadow(0 0 10px);}
+
+	html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
+
+
+
+body {margin:0; padding:0;}
+
+
+	.shadow {position: relative; left: 0px; top: -0px; }
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	body {background-color: #1d84d5}
 
 	
@@ -27,12 +175,7 @@
 
 		
 	
-	/*Social Media links*/
-	#TableSocial {padding-left: 50%; padding-top: 50px;  margin-right: 0%; border: 0px solid #AA2B2D;}
-	.tableright {padding-left: 75px; transform: translatex(100px); z-index: 1}
-	table { border: 0px solid #AA2B2D}	
-	table tr {}
-	table tr th {border: 0px solid #AA2B2D}
+
 
 	/*stages Logo*/
 	.logo {z-index: -30; text-align: center;text-shadow: 12px; position: relative; top: 10px; filter: drop-shadow(0 0 10px);}
@@ -41,22 +184,7 @@
 	
 		html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
 	
-	/*Navigation bar*/
 	
-			nav ul {transform: translateY(240px);center;list-style: none; font-size: 1.5em;  border:0px solid black; z-index: 5}
-			nav ul li {text-align: center; position: relative; top: 0px; display: inline-block; }
-			nav ul li a {text-align: center; font-family: volt; text-decoration: none; color: #999999; margin: 1px; padding-left: 25px; padding-top: 0px; padding-right: 25px; background: black;  }
-			nav ul li a:after {content: ""; display: inline-block; position: absolute; left: 0px; bottom: 0px; background-color: black; width: 0px; height: 3px; transition: all 0.4s; }
-			nav ul li a:hover {color: black; }
-			nav ul li a:hover:after { width: 100%; }
-			body {margin:0; padding:0;}
-	
-	
-@media only screen and (max-width: 600px) {
-  body {
-  nav: opacity 0;
-  }
-}
 	/*LMH PODCAST LINKS*/
 			.pod ul li {text-align: center; position: relative; top: 0px; display: inline-block; }
 			.pod ul li a {text-align: center; font-family: volt; text-decoration: none; color: #999999; margin: 1px; padding-left: 25px; padding-top: 0px; padding-right: 25px; }
@@ -75,8 +203,7 @@
 	.INFO h3 a {color: white; text-decoration: none}
 	h2 {z-index: 1; color: #EFDA03; width 200px; text-align: center; font-size: 30px}
 
-	/*TOP NAV LINKS*/
-	.bringfront {position: sticky; top: -170px; z-index: 20; text-align: center ;}
+	
 	
 	
 	.center {text-align: center;}
@@ -210,7 +337,7 @@ z-index: 100;
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: #white;
 }
 
 /* Fading animation */
@@ -241,49 +368,12 @@ z-index: 100;
 
 
 
+<header class="header">
+        <nav class="navbar">
+
+            <a href="#" class="nav-logo">HOME</a>
 
 
-<!--=========================END of ART slide css======================================================-->
-
-<!--=========================END of CSS======================================================-->
-
-
-<body>
-	
-
-
-
-	
-	
-	<!-- TOP NAV LINKS -->
-<div class="bringfront">
-	  
-	<nav>
-		<ul class="lockdown">
-		  <li>
-			   <a href onclick="topFunction()" id="myBtn" title="Go to top">HOME</a> 
-		    </li>
-		 <li>
-		    <a href="#s2">VIDEO</a>
-		 </li>
-		 <li>
-		 <a href="#s3">RECORDING</a>
-		 </li>
-		 <li>
-		 	<a href="#s4">MERCH</a>
-		 </li>
-		 <li>
-		 	<a href="#s5">COMEDY</a>
-		 </li>	
-		<li>
-		 	<a href="#s6">BOOKING</a>
-		 </li>
-		</ul>
-	</nav>
-	  
-</div>
-	
-		
 <div id="TableSocial">
 	<div class="tableright">
 		<table>
@@ -295,7 +385,7 @@ z-index: 100;
 				</th>
 
 					<th>
-					<a href="https://www.instagram.com/caseyfera/" target="_blank"><img src="imagesS/instagram-round.svg" alt="instagram" width="50" height="50"/></a>
+					<a href="https://www.instagram.com/caseyfera/"target="_blank"><img src="imagesS/instagram-round.svg" alt="instagram" width="50" height="50"/></a>
 				</th>
 <th>
 					<a href="https://www.youtube.com/watch?v=hj38V_JO2yY" target="_blank"><img src="imagesS/youtube.svg" alt="instagram" width="50" height="50"/></a>
@@ -304,6 +394,67 @@ z-index: 100;
   </table>
 	</div>
 	</div>
+
+
+
+
+            <ul class="nav-menu">
+
+
+
+
+
+
+
+
+
+                <li class="nav-item">
+                    <a href="#s2" class="nav-link">VIDEOS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#s3" class="nav-link">RECORDINGS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#s4" class="nav-link">MERCH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#s5" class="nav-link">COMEDY</a>
+                </li>
+  <li class="nav-item">
+                    <a href="#s6" class="nav-link">BOOKING</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+</header>
+
+
+
+
+<!-- old  html STAGES++++++++++++++++++++++++++++++++++++++=-->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+	
+		
+
 <nav>
   <div class="logo">
 		<div class="shadow"><img src="imagesS/logo.png" width="300" alt="stages"/>
@@ -319,10 +470,11 @@ z-index: 100;
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
 
+
+
+
+	
 
 	<div class="backgroundPurple">
 		
@@ -336,7 +488,7 @@ z-index: 100;
   margin-left: auto;
   margin-right: auto;">
 
-<img class="topSlides" src="imagesS/ccblueroom.jpg" style="width:100%; padding-top: 25px;">
+<img class="topSlides" src="imagesS/band3.webp" style="width:100%; padding-top: 25px;">
 <img class="topSlides" src="imagesS/band2.webp" style="width:100%; padding-top: 25px;">
 <img class="topSlides" src="imagesS/band.webp" style="width:100%; padding-top: 25px;">
 <img class="topSlides" src="imagesS/blueroom.webp" style="width:100%; padding-top: 10px;">
@@ -388,6 +540,9 @@ function carousel() {
 		
 		
 		<iframe width="560" height="315" src="https://www.youtube.com/embed/hj38V_JO2yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<br><br><br><br>
 </div>
 	</div>
 </div>
@@ -405,15 +560,25 @@ function carousel() {
 	
 		
 	<!-- bandcamp-->
+
+
 	<div class="center">
-	<iframe style="border: 0; width: 600px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/"seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+	<iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/"seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
 	</div>
+
 	<p></p>
 	
-	<div class="center">
-	<iframe style="border: 0; width: 600px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+	
+
+
+
+<div class="center">
+
+	<iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
 	</div>
 	<p></p>
+
+
 	
 			<!-- reverbnation-->
 		<div class="center">
@@ -635,7 +800,7 @@ contact:</h3<br><h2>
  <center>
 <table style="border: 1px solid black;">
   <tr>
-    <th><img src="imagesS/caseyfera.webp" alt="Casey Image" width="150"></th>
+    <th><img src="imagesS/caseyfera.webp" alt="Casey Image" width="80"></th>
         <th VALIGN=TOP style="text-align: left; border: 10px solid #ce7f87;">CASEY<br>(805)591-4839<br>casey@stageslompoc.com</th>
     <th>          </th>
 <tr>
@@ -656,7 +821,7 @@ or</h3<br><h2>
  <center>
 <table style="border: 1px solid black;">
   <tr>
-    <th ><img src="imagesS/Brett1.webp" alt="Brett Image" width="150"></th>
+    <th ><img src="imagesS/Brett1.webp" alt="Brett Image" width="80"></th>
     <th VALIGN=TOP style="text-align: left; border: 10px solid #ce7f87;">BRETT<br>805-865-2972<br>brett@stageslompoc.com</th>
     <th>          </th>
 <tr>
@@ -669,19 +834,39 @@ or</h3<br><h2>
 </center>
 </div>
 <p></P>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6565.132011176665!2d-120.46957322738828!3d34.64040611539924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec1fb523d09f7b%3A0x581022fc19e994a!2sStages%20Rehearsal%20Studios!5e0!3m2!1sen!2sus!4v1648371435570!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6565.132011176665!2d-120.46957322738828!3d34.64040611539924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec1fb523d09f7b%3A0x581022fc19e994a!2sStages%20Rehearsal%20Studios!5e0!3m2!1sen!2sus!4v1648371435570!5m2!1sen!2sus" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 <p></P>
 
 <div class="center">
-<img src="imagesS/bluedoor.png" width="500">
+<img src="imagesS/bluedoor.png" width="450">
 </div>
 
 
 
 	
 
+<script>    
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+</script>
 
 
 
