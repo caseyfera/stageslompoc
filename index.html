@@ -1,1606 +1,1016 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Dragonfly To Tie v2.6</title>
-    <style>
-        :root {
-            --felt-green: #0a4d2c;
-            --gold: #d4af37;
-            --banker-red: #8b1e1e;
-            --player-blue: #1e5aa8;
-            --tie-green: #1a5220;
-            --panda-purple: #511f73;
-            --dragon-orange: #b86200;
-            --wood-trim: #3e2723;
-            --road-bg: #fff;
-            --road-b: #e0e0e0;
-        }
+<html style="--wm-toolbar-height: 67px;"><head><script src="//archive.org/includes/athena.js" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app254.us.archive.org';v.server_ms=457;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/bundle-playback.js?v=oZ57VlYl" charset="utf-8"></script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/wombat.js?v=txqj7nKC" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="https://web-static.archive.org/_static/js/ruffle/ruffle.js"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://stageslompoc.com/","20250225124521","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1740487521");
+</script>
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3">
+<link rel="stylesheet" type="text/css" href="https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv">
+<!-- End Wayback Rewrite JS Include -->
 
-        body {
-            font-family: 'Garamond', serif;
-            background: #05140b;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
-            margin: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-            box-sizing: border-box;
-        }
+  
+<meta charset="utf-8">
+  <meta name="viewport">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
 
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; }
-        .setup-card { background: #0b2e1a; padding: 30px; border-radius: 20px; border: 3px solid var(--gold); text-align: center; width: 85%; max-width: 420px; box-shadow: 0 0 50px rgba(0,0,0,0.9); max-height: 90vh; overflow-y: auto; }
-        .setup-card input, .setup-card select { width: 90%; padding: 12px; margin: 10px 0; background: #000; color: #fff; border: 1px solid var(--gold); border-radius: 5px; font-size: 1rem; text-align: center; }
+<title>Stages Lompoc</title>
 
-        .casino-mode-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin: 10px 0;
-            text-align: left;
-        }
-        .casino-card {
-            background: rgba(0,0,0,0.6);
-            border: 2px solid rgba(212,175,55,0.4);
-            border-radius: 10px;
-            padding: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-        }
-        .casino-card:hover { border-color: var(--gold); background: rgba(212,175,55,0.1); }
-        .casino-card.selected { border-color: var(--gold); background: rgba(212,175,55,0.2); box-shadow: 0 0 12px rgba(212,175,55,0.4); }
-        .casino-card-flag { font-size: 1.4rem; }
-        .casino-card-name { font-size: 0.75rem; font-weight: bold; color: var(--gold); margin: 3px 0 1px; letter-spacing: 0.5px; }
-        .casino-card-loc { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
-        .casino-card-tag { font-size: 0.6rem; color: #7dff7d; margin-top: 3px; }
-        .casino-card-check { position: absolute; top: 6px; right: 8px; color: var(--gold); font-size: 0.9rem; display: none; }
-        .casino-card.selected .casino-card-check { display: block; }
 
-        .side-bet-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-        .sbt { font-size: 0.55rem; background: rgba(212,175,55,0.2); border: 1px solid rgba(212,175,55,0.4); border-radius: 3px; padding: 1px 4px; color: rgba(255,255,255,0.7); }
+<style>
 
-        .casino-banner {
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(212,175,55,0.4);
-            border-radius: 6px;
-            padding: 5px 12px;
-            text-align: center;
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 1px;
-        }
-        .casino-banner strong { color: var(--gold); }
 
-        .game-content {
-            width: 100vw;
-            max-width: 1400px;
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-            gap: 10px;
-            box-sizing: border-box;
-        }
+@import url('https://web.archive.org/web/20250225124521cs_/https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
-        /* ── Roads: every scoreboard on its own clearly visible row ── */
-        .roads-section { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-        .road-row-bead  { width: 100%; }
-        .road-row-big   { width: 100%; }
-        .road-row-derived { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; width: 100%; }
+/* elfsight fix*/
+.global-styles,
+.mediumScreenDisabled:has(.elfsight-app-930021d6-499c-4322-9ac1-8c71c4a3f2f5) {
+	display: block !important;
+}
 
-        .road-box { background: rgba(0,0,0,0.4); border: 2px solid var(--gold); border-radius: 8px; padding: 8px; box-sizing: border-box; display: flex; flex-direction: column; gap: 5px; }
-        .road-title { text-align: center; color: var(--gold); font-weight: bold; font-size: 0.85rem; letter-spacing: 1px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 4px; flex-shrink: 0; }
-        /* Zoomable scoreboard */
-        .road-zoom-container {
-            position: relative;
-            overflow: hidden;
-            touch-action: none;
-            cursor: zoom-in;
-            border-radius: 4px;
-            width: 100%;
-            height: 100%;
-        }
-        .road-zoom-container.zoomed { cursor: grab; }
-        .road-zoom-container.zoomed:active { cursor: grabbing; }
-        .road-zoom-inner {
-            transform-origin: 0 0;
-            will-change: transform;
-            display: inline-block;
-            min-width: 100%;
-        }
-        .zoom-hint {
-            position: absolute;
-            bottom: 3px;
-            right: 4px;
-            font-size: 0.55rem;
-            color: rgba(212,175,55,0.5);
-            pointer-events: none;
-            letter-spacing: 0.5px;
-            z-index: 2;
-        }
-        .road-canvas-wrap { background: var(--road-bg); border-radius: 4px; border: 1px solid var(--road-b); position: relative; overflow: hidden; display: flex; }
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
 
-        .bead-plate { display: grid; grid-template-rows: repeat(6, 14px); grid-auto-flow: column; grid-auto-columns: 14px; gap: 1px; padding: 3px; overflow-x: auto; height: 96px; box-sizing: border-box; }
-        .bead { width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 6px; font-weight: bold; color: white; flex-shrink: 0; }
-        .bead.banker { background: var(--banker-red); }
-        .bead.player { background: var(--player-blue); }
-        .bead.tie { background: #1a8c22; }
-        .bead.panda-win { background: var(--panda-purple); border: 1px solid white; }
-        .bead.dragon-win { background: var(--dragon-orange); color: black; border: 1px solid black; }
+body {background-color: #1d84d5}
 
-        .big-road-wrap { overflow-x: auto; height: 96px; padding: 3px; box-sizing: border-box; position: relative; }
-        .big-road-grid { display: grid; grid-template-rows: repeat(6, 14px); grid-auto-flow: column; grid-auto-columns: 15px; gap: 1px; height: 90px; }
-        .br-cell { width: 15px; height: 14px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .br-circle { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid; box-sizing: border-box; }
-        .br-circle.banker { background: var(--banker-red); border-color: #6a0000; }
-        .br-circle.player { background: var(--player-blue); border-color: #0d3c7a; }
-        .br-circle.has-tie::after { content: ''; position: absolute; width: 1.5px; height: 9px; background: #1a8c22; top: 2px; left: 50%; transform: translateX(-50%); }
+html {font-size: 62.5%;font-family: 'Roboto', sans-serif;}
 
-        @media (max-width: 768px) {
-            .big-road-wrap { height: 78px; padding: 2px; }
-            .big-road-grid {
-                grid-template-rows: repeat(6, 11px);
-                grid-auto-columns: 12px;
-                gap: 1px;
-                height: 72px;
-            }
-            .br-cell { width: 12px; height: 11px; }
-            .br-circle { width: 9px; height: 9px; border-width: 1px; }
-            .br-circle.has-tie::after { width: 1px; height: 6px; top: 1px; }
+li {list-style: none;}
 
-            .bead-plate {
-                grid-template-rows: repeat(6, 11px);
-                grid-auto-columns: 11px;
-                gap: 1px;
-                height: 78px;
-                padding: 2px;
-            }
-            .bead { width: 11px; height: 11px; font-size: 5px; }
+a {text-decoration: none;}
 
-            .derived-road-wrap { height: 52px; padding: 2px; }
-            .derived-road-grid {
-                grid-template-rows: repeat(4, 11px);
-                grid-auto-columns: 12px;
-                gap: 1px;
-                height: 46px;
-            }
-            .dr-cell { width: 12px; height: 11px; }
-            .dr-circle { width: 8px; height: 8px; }
-            .dr-circle-sm { width: 7px; height: 7px; border-width: 1px; }
-            .dr-slash { width: 8px; height: 8px; }
-            .dr-slash::before { width: 10px; height: 1px; top: 3px; left: -1px; }
-            .road-row-derived { gap: 5px; }
-        }
+.header{border-bottom: 1px solid #E2E8F0;}
 
-        .derived-road-wrap { overflow-x: auto; height: 64px; padding: 3px; box-sizing: border-box; }
-        .derived-road-grid { display: grid; grid-template-rows: repeat(4, 14px); grid-auto-flow: column; grid-auto-columns: 15px; gap: 1px; height: 58px; }
-        .dr-cell { width: 14px; height: 14px; display: flex; align-items: center; justify-content: center; }
-        .dr-circle { width: 10px; height: 10px; border-radius: 50%; }
-        .dr-circle.rep { background: #e02020; }
-        .dr-circle.non { background: var(--player-blue); }
-        .dr-circle-sm { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid; background: transparent; box-sizing: border-box; }
-        .dr-circle-sm.rep { border-color: #e02020; }
-        .dr-circle-sm.non { border-color: var(--player-blue); }
-        .dr-slash { width: 10px; height: 10px; position: relative; }
-        .dr-slash::before { content: ''; position: absolute; width: 12px; height: 1.5px; border-radius: 1px; top: 4px; left: -1px; transform: rotate(-45deg); }
-        .dr-slash.rep::before { background: #e02020; }
-        .dr-slash.non::before { background: var(--player-blue); }
+.navbar {background: white; z-index: 5; width: 100%; position: fixed; display: flex;justify-content: space-between;align-items: center; padding: 1rem 1.5rem;}
 
-        .top-dashboards { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
-        .dashboard-box { background: rgba(0,0,0,0.4); border: 2px solid var(--gold); border-radius: 8px; padding: 12px; box-sizing: border-box; }
-        .dashboard-title { text-align: center; color: var(--gold); font-weight: bold; font-size: 1.05rem; letter-spacing: 1px; margin-bottom: 8px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 4px; position: relative; }
-        .fin-row { display: flex; justify-content: space-between; font-size: 0.9rem; margin: 4px 0; font-family: monospace; }
 
-        .header-area { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; margin-bottom: 5px; }
-        .header-title { font-size: 2rem; color: var(--gold); letter-spacing: 3px; text-align: center; font-weight: bold; text-shadow: 2px 2px 4px #000; margin: 0; }
-        .settings-btn { position: absolute; right: 10px; background: none; border: 1px solid var(--gold); color: var(--gold); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+.hamburger {display: none;}
 
-        .casino-table {
-            background: var(--felt-green);
-            border: 16px solid var(--wood-trim);
-            border-radius: 100px 100px 300px 300px;
-            box-shadow: inset 0 0 100px rgba(0,0,0,0.8), 0 20px 40px rgba(0,0,0,0.7);
-            padding: 20px 30px 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            box-sizing: border-box;
-            transition: background 0.5s, border-color 0.5s;
-        }
-        .table-score-header { display: flex; justify-content: center; gap: 40px; font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 10px; letter-spacing: 1px; }
-        .cards-felt-area { display: flex; justify-content: center; gap: 60px; width: 100%; margin-bottom: 18px; }
-        .card-slots-group { display: flex; gap: 8px; min-height: 80px; justify-content: center; align-items: center; }
-        .card-placeholder-box { width: 52px; height: 76px; border: 2px dashed rgba(255,255,255,0.25); border-radius: 5px; display: flex; align-items: center; justify-content: center; }
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
 
-        .betting-layout { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; max-width: 900px; }
-        .row-main-bets { display: flex; width: 100%; justify-content: center; gap: 20px; }
-        .row-side-bets { display: flex; width: 100%; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
-        .bet-zone { border-radius: 8px; cursor: pointer; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; box-shadow: 0 6px 12px rgba(0,0,0,0.4); transition: transform 0.1s, filter 0.1s; border: 2px solid var(--gold); padding: 10px; }
-        .bet-zone:active { transform: scale(0.98); }
-        .bet-zone.disabled-bet { opacity: 0.25; pointer-events: none; }
-        .zone-player { background: var(--player-blue); width: 220px; height: 80px; }
-        .zone-banker { background: var(--banker-red); width: 220px; height: 80px; }
-        .zone-tie { background: var(--tie-green); border: 4px double var(--gold); width: 160px; height: 80px; }
-        .zone-panda { background: var(--panda-purple); width: 155px; height: 64px; }
-        .zone-dragon { background: var(--dragon-orange); width: 155px; height: 64px; }
-        .zone-lucky6 { background: linear-gradient(135deg, #1a4a6b, #0d6b5e); width: 155px; height: 64px; }
-        .zone-tiger { background: linear-gradient(135deg, #5a1a00, #b84000); width: 155px; height: 64px; }
-        .zone-super6 { background: linear-gradient(135deg, #1b5e20, #388e3c); width: 155px; height: 64px; }
-        .zone-bonus { background: linear-gradient(135deg, #4a148c, #7b1fa2); width: 155px; height: 64px; }
-        .zone-natural { background: linear-gradient(135deg, #bf360c, #e64a19); width: 155px; height: 64px; }
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        .bet-title-text { font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px; }
-        .bet-sub-text { font-size: 0.7rem; opacity: 0.85; margin-bottom: 3px; line-height: 1.2; }
-        .bet-value-text { font-size: 1.1rem; font-weight: bold; color: #fff; }
+.nav-item {
+    margin-left: 5rem;
+}
 
-        .card { width: 54px; height: 80px; background: white; border-radius: 5px; color: black; display: flex; flex-direction: column; justify-content: space-between; padding: 4px; font-size: 0.9rem; box-shadow: 3px 3px 8px rgba(0,0,0,0.5); font-weight: bold; box-sizing: border-box; }
-        .card.red { color: #d32f2f; }
+.nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
+}
 
-        .controls-row { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 0; width: 100%; }
-        .chip-tray { display: flex; gap: 10px; background: rgba(0,0,0,0.7); padding: 10px 20px; border-radius: 50px; border: 2px solid var(--gold); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .chip { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; border: 3px dashed rgba(255,255,255,0.4); font-size: 0.8rem; transition: transform 0.2s, box-shadow 0.2s; }
-        .chip.active { transform: translateY(-8px) scale(1.08); box-shadow: 0 8px 20px var(--gold); border-style: solid; }
-        .c1{background:#eee;color:#333}.c5{background:#d32f2f}.c25{background:#2e7d32}.c50{background:#1976d2}.c100{background:#333;color:var(--gold)}.c500{background:#6a1b9a}.c1000{background:#ff8f00;color:black}
+.nav-link:hover{
+    color: #482ff7;
+}
 
-        .action-buttons-group { display: flex; gap: 20px; width: 100%; justify-content: center; }
-        .main-deal-btn { background: linear-gradient(180deg,#ffe066 0%,var(--gold) 100%); color: black; padding: 12px 60px; font-size: 1.4rem; border: none; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.4); text-transform: uppercase; letter-spacing: 1px; }
-        .main-deal-btn:active { transform: scale(0.97); }
-        .clear-btn { background: none; border: 2px solid var(--gold); color: var(--gold); padding: 10px 25px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 0.95rem; }
+.nav-logo {
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: #1d84d5;
+}
 
-        .win-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.75rem; animation: bounce 0.5s infinite alternate; }
-        @keyframes bounce { from{transform:translateY(0)}to{transform:translateY(-3px)} }
-        .win-flash { animation: flash 0.3s 3; }
-        @keyframes flash { 50%{background:white;color:black;box-shadow:0 0 20px white} }
+@media only screen and (max-width: 870px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow:
+            0 10px 27px rgba(0, 0, 0, 0.05);
+    }
 
-        .coffee-link-wrapper { text-align: center; margin-top: auto; padding-top: 5px; }
-        .coffee-link { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: linear-gradient(135deg,#FFDD00 0%,var(--gold) 100%); color: #000; padding: 6px 12px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.8rem; width: 100%; box-sizing: border-box; box-shadow: 0 3px 6px rgba(0,0,0,0.3); }
 
-        #result-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.82); display: none; justify-content: center; align-items: center; z-index: 500; cursor: pointer; animation: fadeInOverlay 0.25s ease; }
-        @keyframes fadeInOverlay { from{opacity:0} to{opacity:1} }
-        .result-card { border-radius: 24px; padding: 36px 50px; text-align: center; box-shadow: 0 0 80px rgba(0,0,0,0.9); animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1); min-width: 260px; }
-        @keyframes popIn { from{transform:scale(0.6);opacity:0} to{transform:scale(1);opacity:1} }
-        .result-title { font-size: 3rem; font-weight: bold; letter-spacing: 3px; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-        .result-amount { font-size: 1.8rem; font-weight: bold; margin-bottom: 8px; }
-        .result-tap { font-size: 0.85rem; opacity: 0.6; margin-top: 14px; letter-spacing: 1px; }
 
-        .aux-btn { background: none; border: 2px solid var(--gold); color: var(--gold); padding: 10px 22px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 0.9rem; transition: background 0.15s; }
-        .aux-btn:hover { background: rgba(212,175,55,0.15); }
-        .aux-btn:disabled { opacity: 0.3; cursor: default; }
+// Inside the Media Query.
 
-        .inspector-placeholder-label { color: rgba(255,255,255,0.3); text-align: center; font-size: 0.85rem; margin-top: 10px; }
-        .shoe-preview-container { flex-wrap: wrap; gap: 3px; font-size: 10px; font-family: monospace; margin-top: 5px; max-height: 80px; overflow-y: auto; background: #000; padding: 6px; border-radius: 4px; }
-        .preview-card { color: white; border: 1px solid #333; padding: 1px 3px; min-width: 14px; text-align: center; }
-        .next-card { color: var(--gold) !important; border-color: var(--gold) !important; font-weight: bold; }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
 
-        .section-label { font-size: 0.7rem; color: rgba(212,175,55,0.6); text-transform: uppercase; letter-spacing: 2px; text-align: left; margin-bottom: 2px; padding-left: 2px; }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
 
-        /* Session checking spinner */
-        #session-check-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.97); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 2000; }
-        .session-spinner { width: 48px; height: 48px; border: 4px solid rgba(212,175,55,0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 16px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        #session-check-overlay p { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 
-        @media (max-width: 768px) {
-            .aux-btn { padding: 8px 14px; font-size: 0.8rem; }
-            body { padding: 0; background: #08110b; }
-            .game-content { padding: 10px; gap: 10px; }
-            .header-title { font-size: 1.6rem; }
-            .top-dashboards { grid-template-columns: 1fr; }
-            .road-row-derived { gap: 5px; }
-            .casino-table { background: #092414; border: none; border-radius: 12px; box-shadow: none; padding: 15px 10px; }
-            .table-score-header { width: 100%; justify-content: space-around; font-size: 1.1rem; background: rgba(0,0,0,0.4); padding: 8px 0; border-radius: 4px; }
-            .cards-felt-area { flex-direction: row; justify-content: space-around; gap: 10px; margin-bottom: 15px; }
-            .card-slots-group { min-height: 70px; }
-            .card-placeholder-box,.card { width: 44px; height: 68px; font-size: 0.8rem; }
-            .betting-layout { width: 100%; gap: 10px; }
-            .row-main-bets { flex-direction: column; width: 100%; gap: 10px; align-items: center; }
-            .row-side-bets { width: 100%; gap: 8px; justify-content: center; }
-            .bet-zone { width: 100% !important; height: auto !important; padding: 12px 10px; }
-            .zone-panda,.zone-dragon,.zone-lucky6,.zone-tiger,.zone-super6,.zone-bonus,.zone-natural { width: calc(50% - 4px) !important; }
-            .bet-title-text { font-size: 1.25rem; }
-            .bet-value-text { font-size: 1rem; }
-            .controls-row { margin-top: 10px; gap: 12px; }
-            .chip-tray { width: 100%; justify-content: space-between; box-sizing: border-box; padding: 8px 12px; }
-            .chip { width: 38px; height: 38px; font-size: 0.7rem; }
-            .chip.active { transform: translateY(-4px); }
-            .action-buttons-group { flex-wrap: wrap; gap: 8px; width: 100%; align-items: center; justify-content: center; }
-            .main-deal-btn { width: 100%; max-width: 280px; padding: 14px 0; font-size: 1.3rem; }
-            .clear-btn { max-width: 100px; padding: 8px 0; }
-            .casino-mode-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+}
+
+table { border: 0px solid c}  
+  table tr {}
+  table tr th {border: 0px solid #AA2B2D}
+
+
+
+/* end of nav style */
+
+
+/*stages Logo*/
+  .logo {z-index: 0; text-align: center;
+text-shadow: 12px; position: relative; top: 0px; filter: drop-shadow(0 0 10px);}
+
+  html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
+
+
+
+body {margin:0; padding:0;}
+
+
+  .shadow {position: relative; left: 0px; top: -0px; }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  body {background-color: #1d84d5}
+
+  
+  
+  #myBtn {  
+  
+ 
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  
+ 
+
+  }
+
+    
+  
+
+
+  /*stages Logo*/
+  .logo {z-index: -30; text-align: center;text-shadow: 12px; position: relative; top: 10px; filter: drop-shadow(0 0 10px);}
+  .shadow {position: relative; left: 0px; top: -90px; }
+  
+  
+    html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
+  
+  
+  /*LMH PODCAST LINKS*/
+      .pod ul li {text-align: center; position: relative; top: 0px; display: inline-block; }
+      .pod ul li a {text-align: center; font-family: volt; text-decoration: none; color: #999999; margin: 1px; padding-left: 25px; padding-top: 0px; padding-right: 25px; }
+      .pod ul li a:after {content: ""; display: inline-block; position: absolute; left: 0px; bottom: 0px; background-color: #2D576E; width: 0px; height: 3px; transition: all 0.4s; }
+      .pod ul li a:hover {color: black; }
+      .pod ul li a:hover:after { width: 100%; }
+      body {margin:0; padding:0;}
+
+  
+  /*FONTS*/
+  div.backgroundPurple {font-family: volt; background-color: #ce7f87; border: 5px solid #black; height: auto; position: relative; top: -125px}
+  h1 {color: black; }
+  
+  /*Booking INFO ON NEAR THE FOOTER*/
+  .INFO h2 {margin:25px; padding: 25px; color: #EFDA03;}
+  .INFO h3 a {color: white; text-decoration: none}
+  h2 {z-index: 1; color: #EFDA03; width 200px; text-align: center; font-size: 30px}
+
+  
+  
+  
+  .center {text-align: center;}
+  
+/*=========================start of topslide css======================================================*/
+
+  .topSlides {display:none;}
+
+  /*IMG SLIDE SHOW AT THE TOP (LMH,CF)*/
+  .w3-content{margin: auto; width: 300px; height: 220px; background-color: black;}
+  .topSlides{width: 250px;  }
+  
+/*=========================end of top slide css======================================================*/
+  
+  .areweokay {border: 0px solid #CD2C2E; }
+  .areweokay i{font-family:volt; color: black; font-size: 25px;  }
+  .areweokay a{border: 1px #ADADAD}
+  
+  .INFO i {color: white; text-decoration: none}
+  .INFO a {text-decoration: none}
+  
+  h3 {font-size: 35px; color: white}
+
+/*MAKE ALL IFRAMES (VIDEOS BIGER ON SMALL SCREENS*/
+  
+@media only screen and (max-width: 600px) {
+  iframe {
+    width: 100%; 
+  }
+}
+
+/*=========================start of ART slide css======================================================*/ 
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container 
+{display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+ max-width: 500px;
+ height: 300px;
+position: relative;
+  margin: auto;
+}
+
+.fit
+{
+ 
+ display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+ max-width: 500px;
+ height: 300px;
+ object-fit: contain;
+filter: blur (50px);
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+z-index: 101;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #008080;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+ right: 200px;
+top: 10px;
+  width: 100%;
+  text-align: center;
+offset-position: 25% 75%;
+z-index: 100;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #white;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
 </head>
-<body>
+  </style>
 
-    <!-- Session checking spinner (shown while validating saved session) -->
-    <div id="session-check-overlay">
-        <div class="session-spinner"></div>
-        <p>VERIFYING SESSION...</p>
+
+<!-- START OF HTML -->
+
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<style id="readvox-extension-fonts">
+  @font-face {
+    font-display: auto;
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    src: url('chrome-extension://abhjpgicemlbiclagmlbnchinjdimkog/fonts/SF-Pro-Display-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: auto;
+    font-family: 'SF Pro Display Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('chrome-extension://abhjpgicemlbiclagmlbnchinjdimkog/fonts/SF-Pro-Display-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: auto;
+    font-family: 'SF Pro Display Thin';
+    font-style: normal;
+    font-weight: 110;
+    src: url('chrome-extension://abhjpgicemlbiclagmlbnchinjdimkog/fonts/SF-Pro-Display-Thin.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-display: auto;
+    font-family: 'Damion Regular';
+    font-style: normal;
+    font-weight: 500;
+    src: url('chrome-extension://abhjpgicemlbiclagmlbnchinjdimkog/fonts/Damion-Regular.ttf') format('truetype');
+  }
+
+  .readvox-highlight-block {
+    border-radius: 4px !important;
+    background-color: rgb(14 165 233 / 0.1) !important;
+    transition: background-color 0.2s ease-in;
+  }
+  .readvox-highlight-chunk {
+    border-radius: 4px !important;
+    background-color: rgb(14 165 233 / 0.2) !important;
+    transition: background-color 0.2s ease-in;
+  }
+  g.readvox-highlight-chunk rect {
+    fill: rgb(14 165 233 / 0.2) !important;
+    transition: fill 0.2s ease-in;
+  }
+
+  .readvox-in-page-button {
+    display: flex !important;
+    width: min-content;
+    white-space: nowrap;
+    gap: 3px;
+    align-items: center;
+    background-color: #0ea5e9;
+    opacity: 0.6;
+    border-radius: 999px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'SF Pro Display', 
+    sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 0 9px 0 6px !important;
+    text-align: center;
+    letter-spacing: 0.3px;
+    transition: opacity 0.3s ease-in;   
+    height: 22px !important;
+  }
+  .readvox-in-page-button:hover {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+  }
+</style><link href="https://web.archive.org/web/20250225121336/https://core.service.elfsight.com" rel="preconnect"><link href="https://web.archive.org/web/20250225121336/https://static.elfsight.com" rel="preconnect"><link href="https://web.archive.org/web/20250225121336/https://service-reviews-ultimate.elfsight.com" rel="preconnect"><link href="https://web.archive.org/web/20250225121336/https://storage.elfsight.com" rel="preconnect"><style type="text/css">div.eapps-widget{position:relative}div.eapps-widget.eapps-widget-show-toolbar:before{position:absolute;content:"";display:block;bottom:0;top:0;left:0;right:0;pointer-events:none;border:1px solid transparent;transition:border .3s ease;z-index:1}.eapps-widget-toolbar{position:absolute;top:-32px;left:0;right:0;display:block;z-index:99999;padding-bottom:4px;transition:all .3s ease;pointer-events:none;opacity:0}.eapps-widget:hover .eapps-widget-toolbar{opacity:1;pointer-events:auto}.eapps-widget-toolbar a{text-decoration:none;box-shadow:none!important}.eapps-widget-toolbar-panel{border-radius:6px;background-color:#222;color:#fff;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;top:0;position:relative;transition:all .3s ease;opacity:0;overflow:hidden;-webkit-backface-visibility:hidden;backface-visibility:hidden;box-shadow:0 0 0 1px hsla(0,0%,100%,.2);height:28px}.eapps-widget:hover .eapps-widget-toolbar-panel{opacity:1}.eapps-widget-toolbar-panel-wrapper{width:100%;position:relative}.eapps-widget-toolbar-panel-only-you{position:absolute;top:-24px;font-size:11px;line-height:14px;color:#9c9c9c;padding:5px 4px}.eapps-widget-toolbar-panel-logo{width:28px;height:28px;border-right:1px solid hsla(0,0%,100%,.2);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.eapps-widget-toolbar-panel-logo svg{display:block;width:15px;height:15px;fill:#f93262}.eapps-widget-toolbar-panel-edit{font-size:12px;font-weight:400;line-height:14px;display:-ms-inline-flexbox;display:inline-flex;-ms-flex-align:center;align-items:center;padding:9px;border-right:1px solid hsla(0,0%,100%,.2);color:#fff;text-decoration:none}.eapps-widget-toolbar-panel-edit-icon{width:14px;height:14px;margin-right:8px}.eapps-widget-toolbar-panel-edit-icon svg{display:block;width:100%;height:100%;fill:#fff}.eapps-widget-toolbar-panel-views{display:-ms-inline-flexbox;display:inline-flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center}.eapps-widget-toolbar-panel-views-label{font-size:12px;font-weight:400;line-height:14px;margin-left:8px}.eapps-widget-toolbar-panel-views-bar{display:-ms-inline-flexbox;display:inline-flex;width:70px;height:3px;border-radius:2px;margin-left:8px;background-color:hsla(0,0%,100%,.3)}.eapps-widget-toolbar-panel-views-bar-inner{border-radius:2px;background-color:#4ad504}.eapps-widget-toolbar-panel-views-green .eapps-widget-toolbar-panel-views-bar-inner{background-color:#4ad504}.eapps-widget-toolbar-panel-views-red .eapps-widget-toolbar-panel-views-bar-inner{background-color:#ff4734}.eapps-widget-toolbar-panel-views-orange .eapps-widget-toolbar-panel-views-bar-inner{background-color:#ffb400}.eapps-widget-toolbar-panel-views-percent{display:-ms-inline-flexbox;display:inline-flex;margin-left:8px;margin-right:8px;font-size:12px;font-weight:400;line-height:14px}.eapps-widget-toolbar-panel-views-get-more{padding:9px 16px;background-color:#f93262;color:#fff;font-size:12px;font-weight:400;border-radius:0 6px 6px 0}.eapps-widget-toolbar-panel-share{position:absolute;top:0;display:inline-block;margin-left:8px;width:83px;height:28px;padding-bottom:4px;box-sizing:content-box!important}.eapps-widget-toolbar-panel-share:hover .eapps-widget-toolbar-panel-share-block{opacity:1;pointer-events:all}.eapps-widget-toolbar-panel-share-button{padding:0 18px;height:28px;background-color:#1c91ff;color:#fff;font-size:12px;font-weight:400;border-radius:6px;position:absolute;top:0;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;cursor:default;-ms-flex-align:center;align-items:center}.eapps-widget-toolbar-panel-share-button svg{display:inline-block;margin-right:6px;fill:#fff;position:relative;top:-1px}.eapps-widget-toolbar-panel-share-block{position:absolute;background:#fff;border:1px solid hsla(0,0%,7%,.1);border-radius:10px;width:209px;top:32px;transform:translateX(-63px);opacity:0;pointer-events:none;transition:all .3s ease;box-shadow:0 4px 6px rgba(0,0,0,.05)}.eapps-widget-toolbar-panel-share-block:hover{opacity:1;pointer-events:all}.eapps-widget-toolbar-panel-share-block-text{color:#111;font-size:15px;font-weight:400;padding:12px 0;text-align:center}.eapps-widget-toolbar-panel-share-block-text-icon{padding-bottom:4px}.eapps-widget-toolbar-panel-share-block-actions{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;border-top:1px solid hsla(0,0%,7%,.1)}.eapps-widget-toolbar-panel-share-block-actions-item{width:33.333333%;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center;height:39px;transition:all .3s ease;background-color:transparent}.eapps-widget-toolbar-panel-share-block-actions-item:hover{background-color:#fafafa}.eapps-widget-toolbar-panel-share-block-actions-item a{width:100%;height:100%;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;-ms-flex-align:center;align-items:center}.eapps-widget-toolbar-panel-share-block-actions-item-icon{width:16px;height:16px;display:block}.eapps-widget-toolbar-panel-share-block-actions-item-facebook .eapps-widget-toolbar-panel-share-block-actions-item-icon{fill:#3c5a9b}.eapps-widget-toolbar-panel-share-block-actions-item-twitter .eapps-widget-toolbar-panel-share-block-actions-item-icon{fill:#1ab2e8}.eapps-widget-toolbar-panel-share-block-actions-item-google .eapps-widget-toolbar-panel-share-block-actions-item-icon{fill:#dd4b39}.eapps-widget-toolbar-panel-share-block-actions-item:not(:last-child){border-right:1px solid hsla(0,0%,7%,.1)}</style><script src="https://web.archive.org/web/20260524104814/https://static.elfsight.com/apps/instashow/stable/7ddd74df7ca4bbe49e6051e8181ec9ead18dee20/app/instashow.js" async="" charset="UTF-8"></script><style>.eapps-widget{-webkit-font-smoothing:antialiased;animation:none;animation-delay:0;animation-direction:normal;animation-duration:0;animation-fill-mode:none;animation-iteration-count:1;animation-name:none;animation-play-state:running;animation-timing-function:ease;backface-visibility:visible;background:0;background-attachment:scroll;background-clip:border-box;background-color:transparent;background-image:none;background-origin:padding-box;background-position:0 0;background-position-x:0;background-position-y:0;background-repeat:repeat;background-size:auto auto;border:0;border-style:none;border-width:medium;border-color:inherit;border-bottom:0;border-bottom-color:inherit;border-bottom-left-radius:0;border-bottom-right-radius:0;border-bottom-style:none;border-bottom-width:medium;border-collapse:separate;border-image:none;border-left:0;border-left-color:inherit;border-left-style:none;border-left-width:medium;border-radius:0;border-right:0;border-right-color:inherit;border-right-style:none;border-right-width:medium;border-spacing:0;border-top:0;border-top-color:inherit;border-top-left-radius:0;border-top-right-radius:0;border-top-style:none;border-top-width:medium;bottom:auto;box-shadow:none;box-sizing:content-box;caption-side:top;clear:none;clip:auto;color:inherit;columns:auto;column-count:auto;column-fill:balance;column-gap:normal;column-rule:medium none currentColor;column-rule-color:currentColor;column-rule-style:none;column-rule-width:none;column-span:1;column-width:auto;content:normal;counter-increment:none;counter-reset:none;direction:ltr;empty-cells:show;float:none;font:normal;font-family:inherit;font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;height:auto;hyphens:none;left:auto;letter-spacing:normal;line-height:normal;list-style:none;list-style-image:none;list-style-position:outside;list-style-type:disc;margin:0;margin-bottom:0;margin-left:0;margin-right:0;margin-top:0;opacity:1;orphans:0;outline-color:invert;outline-width:medium;overflow:visible;overflow-x:visible;overflow-y:visible;padding:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;page-break-after:auto;page-break-before:auto;page-break-inside:auto;perspective:none;perspective-origin:50% 50%;position:static;quotes:'\201C' '\201D' '\2018' '\2019';right:auto;tab-size:8;table-layout:auto;text-align:inherit;text-align-last:auto;text-decoration:none;text-decoration-color:inherit;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-shadow:none;text-transform:none;top:auto;transform:none;transform-style:flat;transition:none;transition-delay:0s;transition-duration:0s;transition-property:none;transition-timing-function:ease;unicode-bidi:normal;vertical-align:baseline;visibility:visible;white-space:normal;widows:0;width:auto;word-spacing:normal;z-index:auto}.eui-popover{opacity:0;visibility:hidden}.eui-popover-content{position:absolute;bottom:100%;right:0;padding-bottom:11px;width:192px;z-index:6}.eui-popover-content-inner{position:relative;background:#fff;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.2)}.eui-popover-content-item{display:flex;align-items:center;color:#17191a;font-size:13px;font-weight:400;line-height:1;border-top:1px solid #e5e6e7;padding:12px 0;cursor:pointer;transition:all .2s ease;position:relative;text-align:left}.eui-popover-content-item:first-child{border:none}.eui-popover-content-item:hover{background:#fafafa;border-radius:4px}.eui-popover-content-item-icon{height:100%;width:12px;float:left;align-items:center;justify-content:center;display:inline-flex;margin-left:12px}.eui-popover-content-item-title{display:inline-block;margin-left:12px}.eui-popover-open{opacity:1;visibility:visible}.eui-popover-left .eui-popover-content-inner:before{right:40px;left:auto;margin-left:auto}.eui-extra-small .eui-popover-left .eui-popover-content-inner:before{right:10px}.eui-popover-bottom .eui-popover-content{top:100%;padding-top:11px}.eui-popover-bottom .eui-popover-content-inner:before{top:-5px}.eui-slider{position:relative;height:100%;user-select:none;overflow:hidden}.eui-slider-inner{z-index:1;position:relative;height:100%;display:flex;transition-property:transform}.eui-slider-inner-animating{will-change:transform}.eui-slider-slide{width:100%;height:100%;display:inline-block;overflow:hidden;flex-grow:1;flex-shrink:0}.eui-slider-arrow{opacity:0;visibility:hidden;pointer-events:none}.eui-slider-arrow-enabled{opacity:1;visibility:visible;pointer-events:all}.eui-slider-dots{display:flex;justify-content:center}.eui-slider-dots-inner{display:inline-flex}.eui-slider-dots-classic .eui-slider-dots-inner{overflow:hidden;width:80px}.eui-slider-dots-item{display:inline-block;position:relative;transition:.3s all ease-out;cursor:pointer}.eui-slider-dots-numbers .eui-slider-dots-item{padding:0 4px;transform:scale(.8);opacity:.6;font-weight:600}.eui-slider-dots-numbers .eui-slider-dots-item-active{transform:scale(1);opacity:1}.eui-slider-dots-numbers .eui-slider-dots-item:hover{transform:scale(1);opacity:1}.eui-slider-dots-classic .eui-slider-dots-item{background:#000;border-radius:50%;transform:scale(.33);opacity:.3;width:8px;min-width:8px;height:8px;margin:0 4px}.eui-slider-dots-classic .eui-slider-dots-item-active{transform:scale(1);opacity:1}.eui-slider-dots-classic .eui-slider-dots-item-active-next,.eui-slider-dots-classic .eui-slider-dots-item-active-prev{transform:scale(.66);opacity:.6}.eui-slider-dots-classic .eui-slider-dots-item-active-next-next,.eui-slider-dots-classic .eui-slider-dots-item-active-prev-next,.eui-slider-dots-classic .eui-slider-dots-item-active-next-prev,.eui-slider-dots-classic .eui-slider-dots-item-active-prev-prev{transform:scale(.33);opacity:.3}.eapps-instagram-feed-container div:empty{display:block}.instagram-feed{position:relative}.eapps-instagram-feed{font-size:14px;font-family:-apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;line-height:18px;font-weight:400;width:100%;max-height:100%;position:relative;box-sizing:border-box;min-width:150px;min-height:100px}.eapps-instagram-feed-has-error.eapps-instagram-feed-debug .eapps-instagram-feed-content{min-height:300px}.eapps-instagram-feed-has-error:not(.eapps-instagram-feed-debug){display:none}.eapps-instagram-feed-title{font-size:24px;font-weight:600;text-align:center;line-height:32px;padding:24px 10px}.eapps-instagram-feed-content{position:relative;width:100%}.eapps-instagram-feed-content-loader{color:rgba(0,0,0,0.2)}.eapps-instagram-feed-container{width:100%}.eapps-instagram-feed a{text-decoration:none;color:#000;margin:0}.eapps-instagram-feed a:hover{text-decoration:underline}.eui-popover-content{width:162px}.eui-popover-content-inner{position:relative;background:#2f353a;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.2)}.eui-popover-content-inner:before{content:'';background:#2f353a;position:absolute;bottom:-5px;right:20px;width:10px;height:10px;transform:rotateZ(-45deg)}.eui-popover-content-item{color:#fff;border-top:1px solid #42474c;transition:all .2s ease}.eui-popover-content-item:hover{background:#42474c}.eui-popover-content-item-icon{height:100%;width:12px;float:left;align-items:center;justify-content:center;display:inline-flex;margin-left:12px}.eui-popover-content-item-icon img{width:100%;height:100%}.eui-popover-content-item-title{display:inline-block;margin-left:12px}.eapps-instagram-feed-loader{box-sizing:border-box;display:block;position:absolute;top:50%;left:50%;border-radius:50%;border-style:solid;border-top-color:transparent;animation:eapps-instagram-feed-loader 1s infinite linear;opacity:0;visibility:hidden;width:32px;height:32px;margin:-16px 0 0 -16px;border-width:2px;z-index:1}.eapps-instagram-feed-loader-visible{opacity:1;visibility:visible}@-moz-keyframes eapps-instagram-feed-loader{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@-webkit-keyframes eapps-instagram-feed-loader{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@-o-keyframes eapps-instagram-feed-loader{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}@keyframes eapps-instagram-feed-loader{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.eapps-instagram-feed-error-container .eui-error{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;top:0;right:0;bottom:0;left:0;position:absolute;z-index:101;font-size:15px;font-weight:400;color:#7f8588;background:#fff;padding:0 20px}.eapps-instagram-feed-error-container .eui-error-item{margin:8px 0;text-align:center}.eapps-instagram-feed-error-container .eui-error-item:first-child{margin-top:0}.eapps-instagram-feed-error-container .eui-error-item:last-child{margin-bottom:0}.eapps-instagram-feed-data-status{position:fixed;bottom:20px;right:20px;padding:16px;border-radius:8px;background:#fff;box-shadow:0 4px 6px rgba(0,0,0,0.2);z-index:99999999;opacity:0;visibility:hidden;pointer-events:none;transition:all .2s ease;max-width:320px}.eapps-instagram-feed-data-status-visible{opacity:1;visibility:visible;pointer-events:all}.eapps-instagram-feed-data-status-item{display:flex}.eapps-instagram-feed-data-status-item + .eapps-instagram-feed-data-status-item{margin-top:12px}.eapps-instagram-feed-data-status-item-icon-container{position:relative;width:16px;height:16px}.eapps-instagram-feed-data-status-item-message{padding-left:12px}.eapps-instagram-feed-data-status-item-error-icon{opacity:0;visibility:hidden;fill:#ff4734;margin-top:2px}.eapps-instagram-feed-data-status-item-state-error .eapps-instagram-feed-data-status-item-error-icon{opacity:1;visibility:visible}.eapps-instagram-feed-data-status-item .eapps-instagram-feed-loader{width:16px;height:16px;margin:-8px 0 0 -8px}.eapps-instagram-feed-data-status-item-state-loading.eapps-instagram-feed-data-status-item .eapps-instagram-feed-loader{opacity:1;visibility:visible}.eapps-instagram-feed-header{background:#fff;padding:20px}.eapps-instagram-feed-header-inner{display:flex;flex-wrap:nowrap;justify-content:center;align-items:center;margin:0 auto;max-width:600px}.eapps-instagram-feed-header-small .eapps-instagram-feed-header-inner{flex-direction:column}.eapps-instagram-feed-header-user{display:flex;align-items:center}.eapps-instagram-feed-header-user-picture{display:block;width:40px;height:40px;max-width:none;box-shadow:0 0 0 2px #fff;box-sizing:border-box;transition:all .2s ease;margin:0 !important}.eapps-instagram-feed-header-user-picture:hover{opacity:.95}.eapps-instagram-feed-header-user-picture-wrapper{background:linear-gradient(40deg,#f99b4a 15%,#dd3071 50%,#c72e8d 85%);width:48px;height:48px;border-radius:50%;padding:4px;box-sizing:border-box;margin-right:12px}.eapps-instagram-feed-header-user-picture-wrapper > a{width:100%;height:100%;display:block;border-radius:50%}.eapps-instagram-feed-header-user-info-name{display:flex;align-items:center;font-size:16px;font-weight:bold;color:currentColor}.eapps-instagram-feed-header-user-info-verified-badge{display:block;margin-left:4px;width:12px;height:12px}.eapps-instagram-feed-header-user-info-verified-badge svg{display:block;width:12px;height:12px}.eapps-instagram-feed-header-user-info-caption{font-size:12px;opacity:.5}.eapps-instagram-feed-header-stats{display:flex}.eapps-instagram-feed-header-user + .eapps-instagram-feed-header-stats{margin-left:40px}.eapps-instagram-feed-header-small .eapps-instagram-feed-header-user + .eapps-instagram-feed-header-stats{margin-left:0;margin-top:12px}.eapps-instagram-feed-header-stats-item{text-align:center;margin-right:20px}.eapps-instagram-feed-header-stats-item:last-child{margin-right:0}.eapps-instagram-feed-header-stats-item-value{font-size:14px;font-weight:bold;color:currentColor}.eapps-instagram-feed-header-stats-item-label{font-size:12px;color:currentColor;opacity:.5}.eapps-instagram-feed-header-follow-button{display:flex;align-items:center;position:relative;height:32px;line-height:32px;border-radius:4px;overflow:hidden;padding:0 12px;border:none;background:#0095f6;color:#fff;text-align:center;outline:none;cursor:pointer;margin-left:40px;font-size:14px;transition:background .2s ease;text-decoration:none}.eapps-instagram-feed-header-follow-button:focus-visible{outline:1px solid #000;outline-offset:2px}.eapps-instagram-feed-header-user + .eapps-instagram-feed-header-follow-button-wrapper,.eapps-instagram-feed-header-stats + .eapps-instagram-feed-header-follow-button-wrapper{margin-left:40px}.eapps-instagram-feed-header-small .eapps-instagram-feed-header-user + .eapps-instagram-feed-header-follow-button-wrapper,.eapps-instagram-feed-header-small .eapps-instagram-feed-header-stats + .eapps-instagram-feed-header-follow-button-wrapper{margin-left:0;margin-top:12px}.eapps-instagram-feed-header-follow-button::after{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:currentColor;opacity:0;visibility:hidden;transition:all .2s ease}.eapps-instagram-feed-header-follow-button:hover{text-decoration:none}.eapps-instagram-feed-header-follow-button:hover::after{opacity:.1;visibility:visible}.eapps-instagram-feed-header-follow-button-icon{width:16px;height:16px;display:block;fill:currentColor;margin-right:8px}.eapps-instagram-feed-header-follow-button-label{color:currentColor}.eapps-instagram-feed-posts{width:100%}.eapps-instagram-feed-posts-container{width:100%}.eapps-instagram-feed-posts-inner{box-sizing:border-box;position:relative}.eapps-instagram-feed-posts-view{display:inline-flex;flex-direction:row;justify-content:flex-start;flex-wrap:wrap;box-sizing:border-box;width:100%;height:auto}.eapps-instagram-feed-posts-view.eui-slider-slide{display:inline-flex;width:100%;height:auto}.eapps-instagram-feed-posts-view-empty{height:1px !important}.eapps-instagram-feed-posts-slider{position:relative;height:auto;user-select:none;cursor:-webkit-grab;cursor:grab;width:100%}.eapps-instagram-feed-posts-slider-inner{z-index:1;position:relative;height:auto;display:flex;width:100%}.eapps-instagram-feed-posts-slider-inner-disable-click .eapps-instagram-feed-posts-item{pointer-events:none}.eapps-instagram-feed-posts-slider-item{width:100%;height:auto;display:inline-block;overflow:hidden;flex-grow:1;flex-shrink:0}.eapps-instagram-feed-posts-slider-nav{background:#000;position:absolute;top:50%;width:60px;height:60px;justify-content:center;align-items:center;border-radius:50%;z-index:1;cursor:pointer;opacity:.85;transition:all .2s;backface-visibility:hidden;border:none}.eapps-instagram-feed-posts-slider-nav-icon{width:12px;height:16px;fill:#fff;display:block;position:absolute;top:50%;transform:translateY(-50%)}.eapps-instagram-feed-posts-slider-nav:hover{opacity:1}.eapps-instagram-feed-posts-slider-nav-disabled{display:none}.eapps-instagram-feed-posts-slider-prev{left:0;transform:translate3d(-50%,-50%,0);box-shadow:2px 0 5px rgba(0,0,0,0.3)}.eapps-instagram-feed-posts-slider-prev .eapps-instagram-feed-posts-slider-nav-icon{right:12px}.eapps-instagram-feed-posts-slider-prev:active{transform:translate3d(-50%,-50%,0) scale(.9)}.eapps-instagram-feed-posts-slider-next{right:0;transform:translate(50%,-50%);box-shadow:-2px 0 5px rgba(0,0,0,0.3)}.eapps-instagram-feed-posts-slider-next .eapps-instagram-feed-posts-slider-nav-icon{left:12px}.eapps-instagram-feed-posts-slider-next:active{transform:translate3d(50%,-50%,0) scale(.9)}.eapps-instagram-feed-posts-grid .eapps-instagram-feed-posts-inner{display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between}.eapps-instagram-feed-posts-grid .eapps-instagram-feed-posts-view:not(:first-child){padding-top:0 !important}.eapps-instagram-feed-posts-grid .eapps-instagram-feed-posts-item{display:flex;flex-direction:column;flex-grow:0}.eapps-instagram-feed-posts-grid-load-more{display:block;position:relative;width:228px;height:32px;line-height:32px;border-radius:4px;border:none;background:#3897f0;color:#fff;text-align:center;cursor:pointer;margin:24px auto;padding:0;font-size:14px;transition:opacity .5s ease,visibility .5s ease,background .2s ease;opacity:0;visibility:hidden}.eapps-instagram-feed-posts-grid-load-more:hover,.eapps-instagram-feed-posts-grid-load-more:focus{background:#45a1f8}.eapps-instagram-feed-posts-grid-load-more:focus-visible{outline:1px solid #000;outline-offset:2px}.eapps-instagram-feed-posts-grid-load-more-container{display:none}.eapps-instagram-feed-posts-grid-load-more-container.eapps-instagram-feed-posts-grid-load-more-enabled{display:block}.eapps-instagram-feed-posts-grid-load-more-visible{opacity:1;visibility:visible}.eapps-instagram-feed-posts-grid-load-more-loading .eapps-instagram-feed-posts-grid-load-more-text{opacity:0;visibility:hidden}.eapps-instagram-feed-posts-grid-load-more .eapps-instagram-feed-loader{display:inline-block;width:12px;height:12px;margin:-7px 0 0 -7px}.eapps-instagram-feed-posts-grid-load-more-loading.eapps-instagram-feed-posts-grid-load-more .eapps-instagram-feed-loader{opacity:1;visibility:visible}.eapps-instagram-feed-posts-item{box-sizing:border-box;display:flex;flex-direction:column;position:relative;background:#fff;transition:opacity .2s ease,visibility .2s ease;opacity:0;overflow:hidden;visibility:hidden;flex-grow:0;flex-shrink:0}.eui-slider-slide-clone .eapps-instagram-feed-posts-item{opacity:1;visibility:visible}.eapps-instagram-feed-posts-item-visible.eapps-instagram-feed-posts-item-loaded{opacity:1;visibility:visible}.eapps-instagram-feed-posts-item a,.eapps-instagram-feed-posts-item a:hover{color:#003569}.eapps-instagram-feed-posts-item-header{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;box-sizing:border-box;height:60px}.eapps-instagram-feed-posts-item-user{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;padding:12px;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.eapps-instagram-feed-posts-item-user-image{display:block;width:28px;height:28px;box-shadow:0 0 0 2px #fff;box-sizing:border-box;transition:all .2s ease;margin:0 !important}.eapps-instagram-feed-posts-item-user-image:hover{opacity:.95}.eapps-instagram-feed-posts-item-user-image-wrapper{background:linear-gradient(40deg,#f99b4a 15%,#dd3071 50%,#c72e8d 85%);min-width:36px;height:36px;border-radius:50%;padding:4px;box-sizing:border-box;margin-right:12px}.eapps-instagram-feed-posts-item-user-image-wrapper > a{width:100%;height:100%;display:block;background:#fff;border-radius:50%}.eapps-instagram-feed-posts-item-user-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;font-weight:600}.eapps-instagram-feed-posts-item-user-name-wrapper{display:flex;flex-direction:column;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.eapps-instagram-feed-posts-item-date{text-transform:uppercase;font-size:10px;opacity:.6;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.eapps-instagram-feed-posts-item-instagram-link{display:block;width:24px;height:24px;margin-left:auto;padding:12px 12px 12px 0;box-sizing:content-box}.eapps-instagram-feed-posts-item-instagram-link > a{display:block}.eapps-instagram-feed-posts-item-instagram-link > a > svg{width:24px;height:24px;display:block;fill:currentColor}.eapps-instagram-feed-posts-item-media > a{display:block}.eapps-instagram-feed-posts-item-link{cursor:pointer;overflow:hidden}.eapps-instagram-feed-posts-item-link-disabled{cursor:default}.eapps-instagram-feed-posts-item-link:focus-visible{z-index:2;border:1px solid #000}.eapps-instagram-feed-posts-item-image{position:absolute !important;margin:0 !important;width:auto;top:50%;left:50%;transform:translate(-50%,-50%) !important}.eapps-instagram-feed-posts-item-image-ratio-4-5 .eapps-instagram-feed-posts-item-image{aspect-ratio:4/5;object-fit:cover}.eapps-instagram-feed-posts-item-image-portrait .eapps-instagram-feed-posts-item-image{width:100%}.eapps-instagram-feed-posts-item-image-landscape .eapps-instagram-feed-posts-item-image{height:100% !important;min-width:100%;max-width:inherit !important}.eapps-instagram-feed-posts-item-image-wrapper{position:relative;overflow:hidden;margin:-1px}.eapps-instagram-feed-posts-item-image-ratio-1-1 .eapps-instagram-feed-posts-item-image-wrapper{padding-top:100%}.eapps-instagram-feed-posts-item-image-ratio-4-5 .eapps-instagram-feed-posts-item-image-wrapper{padding-top:125%}.eapps-instagram-feed-posts-item-image-icon{display:none;position:absolute;z-index:2;top:.6em;right:.6em;width:24px;height:24px;transition:all .3s ease}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-image-icon{transform:scale(.6);transform-origin:top right}.eapps-instagram-feed-posts-item-image-icon svg{display:block;width:24px;height:24px;fill:rgba(255,255,255,0.8)}.eapps-instagram-feed-posts-item-type-video .eapps-instagram-feed-posts-item-image-icon-video{display:block}.eapps-instagram-feed-posts-item-type-carousel .eapps-instagram-feed-posts-item-image-icon-carousel{display:block}.eapps-instagram-feed-posts-item-counters a:hover{text-decoration:none}.eapps-instagram-feed-posts-item-likes-count,.eapps-instagram-feed-posts-item-comments-count{display:inline-flex;align-items:center}.eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-item-comments-count-icon{fill:currentColor;width:24px;height:24px}.eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-item-comments-count-label{margin-left:6px;font-size:14px}.eapps-instagram-feed-posts-item-red-like{position:absolute;z-index:10;left:0;bottom:0;color:#fff;background:#ee4957;height:28px;padding:0 8px;display:flex;align-items:center;justify-content:center;font-size:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease,bottom .2s ease}.eui-slider-slide-clone .eapps-instagram-feed-posts-item-red-like{display:none}.eapps-instagram-feed-posts-item-red-like-visible{opacity:1;visibility:visible;pointer-events:all}.eapps-instagram-feed-posts-item-red-like-icon{height:12px;width:12px;display:inline-block;fill:#fff}.eapps-instagram-feed-posts-item-red-like-count{margin-left:4px}.eapps-instagram-feed-posts-item-red-like-label{margin-left:8px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-red-like-label,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-red-like-label{display:none}.eapps-instagram-feed-posts-item-share{position:relative;display:inline-flex;align-items:center;cursor:pointer;background:none;border:none}.eapps-instagram-feed-posts-item-share-icon{fill:currentColor}.eapps-instagram-feed-posts-item-share-label{margin-left:6px;font-size:14px}.eapps-instagram-feed-posts-item-content .eui-item-text-see-more{color:inherit;transition:all .2s ease}.eapps-instagram-feed-posts-item-content .eui-item-text-see-more:hover{opacity:1}.eapps-instagram-feed-posts-item-template-tile{user-select:none}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-link{width:100%;box-sizing:border-box;display:flex}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-overlay{position:absolute;z-index:2;top:-1px;right:-1px;bottom:-1px;left:-1px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s,visibility .3s;text-align:center;box-sizing:border-box;color:#fff;background:rgba(0,0,0,0.8);display:flex;align-items:center}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-overlay{transition:none}}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-overlay-hover,.eapps-instagram-feed-posts-item-with-data:hover.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-overlay{opacity:1;visibility:visible;pointer-events:all;padding-top:0}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content{transform:translateY(10%);width:80%;max-height:80%;margin:0 auto;position:relative;transition:.3s all ease}.eapps-instagram-feed-posts-item-with-data:hover.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content{transform:translateY(0)}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content{transform:translateY(0)}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content-cropped::after{content:'···';display:block;line-height:1;font-size:18px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content-cropped::after{line-height:.5}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-content-cropped::after{display:none}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-media{width:100%}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image{transition:transform .3s ease,filter .3s;left:50%;transform:scale(1) translate(-50%,-50%);transform-origin:0 0;backface-visibility:hidden}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image{transition:none}}.eapps-instagram-feed-posts-item-with-data:hover.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image{transform:scale(1.1) translate(-50%,-50%);transform-origin:0 0;filter:grayscale(1)}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.eapps-instagram-feed-posts-item-with-data:hover.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image{transform:scale(1.05) translate(-50%,-50%)}}.eapps-instagram-feed-posts-item-with-data:hover.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-image-icon{opacity:0}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count,.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count{min-width:70px;justify-content:center}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-label{font-size:16px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-label{font-size:15px}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-label{font-size:12px}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-icon{width:24px;height:24px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-icon{width:20px;height:20px}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count-icon{width:16px;height:16px}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-comments-count{display:flex;margin:8px 0}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count + .eapps-instagram-feed-posts-item-comments-count{margin-left:20px}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count + .eapps-instagram-feed-posts-item-comments-count,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-likes-count + .eapps-instagram-feed-posts-item-comments-count{margin-left:0}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text{font-size:14px;line-height:21px;display:inline-block;overflow:hidden;margin-top:12%;text-align:center;max-height:84px;width:100%}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text{font-size:13px;line-height:18px;max-height:56px;margin-top:6%}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text{display:none}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text-clone{opacity:0;visibility:hidden;position:absolute;left:0;right:0;max-height:none}.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text-clone,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-text-clone{max-height:none}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-red-like{bottom:-10px}.eapps-instagram-feed-posts-item-template-tile .eapps-instagram-feed-posts-item-red-like-visible{bottom:0;right:0}.eapps-instagram-feed-posts-item-template-classic{border:1px solid rgba(0,0,0,0.1)}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-instagram-link,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-instagram-link{display:none}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-meta{display:flex;flex-direction:row;align-items:baseline;padding:12px;line-height:1;position:relative}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-meta + .eapps-instagram-feed-posts-item-content{margin-top:0}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-counters{display:flex;align-items:center}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count,.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count{margin-right:12px}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count-icon{width:24px;height:24px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count-label,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count-label,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count-label{font-size:13px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count-icon,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-likes-count-icon,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-comments-count-icon{width:20px;height:20px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-share,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-share{display:none}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-text{font-size:14px;display:inline-block;overflow:hidden;max-height:90px;width:100%}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-text{font-size:14px;line-height:18px;max-height:72px}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-text-clone{opacity:0;visibility:hidden;position:absolute;left:0;right:0;max-height:none;top:0}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-text-clone{max-height:none}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like{top:-32px;left:6px;border-radius:6px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like{width:40px;left:4px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like:after,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like:after{bottom:-42px}.eapps-instagram-feed-posts-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like-label,.eapps-instagram-feed-posts-extra-small .eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like-label{display:none}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like:before{content:'';position:absolute;bottom:-6px;left:12px;background:#ee4957;transform:rotateZ(-45deg);width:12px;height:12px}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-red-like:after{content:'';position:absolute;bottom:-45px;left:16px;background:#ee4957;width:4px;height:4px;border-radius:50%}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-share{margin-left:auto}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-content{margin:12px;position:relative}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-content-cropped{text-decoration:none !important}.eapps-instagram-feed-posts-item-template-classic .eapps-instagram-feed-posts-item-content-cropped:after{content:'...';line-height:1;font-weight:600;opacity:.6;margin-top:-4px;display:block;text-decoration:none !important}.eapps-widget.eapps-instagram-feed-popup{position:fixed;z-index:999999;top:0;right:0;bottom:0;left:0;opacity:0;visibility:hidden;pointer-events:none;box-sizing:border-box;background:rgba(0,0,0,0.8)}.eapps-widget.eapps-instagram-feed-popup-visible{pointer-events:all;opacity:1;visibility:visible}.eapps-instagram-feed-popup-wrapper{position:fixed;top:0;right:0;bottom:0;left:0;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}@media only screen and (max-width:767px){.eapps-instagram-feed-popup-wrapper{top:56px}}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-wrapper{top:48px}}.eapps-instagram-feed-popup-inner{width:100%;padding-bottom:100vh;max-width:640px;margin:0 auto;position:relative;z-index:3}.eapps-instagram-feed-popup-close{display:inline-block !important;position:fixed;top:20px;left:50%;width:32px;height:32px;margin-left:332px;cursor:pointer;z-index:11;opacity:.7;transition:opacity .25s ease,transform .25s ease;background:none;border:none;outline:none}@media only screen and (max-width:767px){.eapps-instagram-feed-popup-close{opacity:1;left:12px;top:14px;margin:0}}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-close{top:8px}}.eapps-instagram-feed-popup-close:hover,.eapps-instagram-feed-popup-close:focus{opacity:1}.eapps-instagram-feed-popup-close::before,.eapps-instagram-feed-popup-close::after{content:'';display:block;position:absolute;top:50%;left:50%;border-radius:10px;background:#fff;transform:rotate(45deg)}@media only screen and (max-width:767px){.eapps-instagram-feed-popup-close::before,.eapps-instagram-feed-popup-close::after{background:#000}}.eapps-instagram-feed-popup-close::before{width:24px;height:2px;margin:-1px 0 0 -12px}.eapps-instagram-feed-popup-close::after{width:2px;height:24px;margin:-12px 0 0 -1px}.eapps-instagram-feed-popup-close:active{transform:scale(.85)}.eapps-instagram-feed-popup-close:focus-visible{outline:1px solid #000;outline-offset:2px}.eapps-instagram-feed-popup-mobile-panel{background:#f8f8f8;border-bottom:1px solid #f1f1f1;display:none;height:56px;position:fixed;z-index:10;top:0;right:0;left:0;align-items:center;box-sizing:border-box;padding:0 12px}@media only screen and (max-width:767px){.eapps-instagram-feed-popup-mobile-panel{display:flex}}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-mobile-panel{height:48px}}.eapps-instagram-feed-popup-mobile-panel-title{display:block;width:100%;text-align:center;color:#000;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 40px}.eapps-instagram-feed-popup-scroll-indicator{display:block;position:fixed;top:50%;left:50%;margin-top:-26px;margin-left:332px;text-align:center;z-index:11;opacity:0;visibility:hidden;transition:opacity .6s ease,visibility .6s ease}.eapps-instagram-feed-popup-scroll-indicator-visible{opacity:1;visibility:visible}@media only screen and (max-width:767px){.eapps-instagram-feed-popup-scroll-indicator{display:none}}.eapps-instagram-feed-popup-scroll-indicator-mouse{position:relative;display:block;width:32px;height:52px;margin:0 auto 4px;box-sizing:border-box;border:2px solid #fff;border-radius:23px;opacity:.5}.eapps-instagram-feed-popup-scroll-indicator-mouse-wheel{position:absolute;display:block;top:12px;left:50%;width:4px;height:4px;margin-left:-2px;background:#fff;border-radius:50%;animation:eapps-instagram-feed-popup-scroll-indicator 1.5s cubic-bezier(.32,0,.6,1.01) infinite}.eapps-instagram-feed-popup-scroll-indicator-label{display:inline-block;line-height:18px;font-size:13px;font-weight:normal;color:#fff}@-moz-keyframes eapps-instagram-feed-popup-scroll-indicator{0%{opacity:1;transform:scale(1) translateY(0)}90%{opacity:0;transform:scale(.7) translateY(32px)}95%{opacity:0;transform:scale(1) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}@-webkit-keyframes eapps-instagram-feed-popup-scroll-indicator{0%{opacity:1;transform:scale(1) translateY(0)}90%{opacity:0;transform:scale(.7) translateY(32px)}95%{opacity:0;transform:scale(1) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}@-o-keyframes eapps-instagram-feed-popup-scroll-indicator{0%{opacity:1;transform:scale(1) translateY(0)}90%{opacity:0;transform:scale(.7) translateY(32px)}95%{opacity:0;transform:scale(1) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}@keyframes eapps-instagram-feed-popup-scroll-indicator{0%{opacity:1;transform:scale(1) translateY(0)}90%{opacity:0;transform:scale(.7) translateY(32px)}95%{opacity:0;transform:scale(1) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}.eapps-instagram-feed-popup-item{color:#000;background:#fff;width:100%;min-height:300px;overflow:hidden;position:relative;border-bottom:1px solid rgba(0,0,0,0.05)}@media only screen and (max-width:679px){.eapps-instagram-feed-popup-item{min-height:240px}}@media only screen and (max-width:479px){.eapps-instagram-feed-popup-item{min-height:160px}}.eapps-instagram-feed-popup-item:first-child{margin-top:0}.eapps-instagram-feed-popup-item-inner{opacity:0;visibility:hidden}.eapps-instagram-feed-popup-item-loaded .eapps-instagram-feed-popup-item-inner{opacity:1;visibility:visible}.eapps-instagram-feed-popup-item .eapps-instagram-feed-loader{color:rgba(0,0,0,0.2);opacity:1;visibility:visible;width:48px;height:48px;margin:-24px 0 0 -24px;border-width:4px}.eapps-instagram-feed-popup-item-loaded.eapps-instagram-feed-popup-item .eapps-instagram-feed-loader{display:none}.eapps-instagram-feed-popup-item-header{position:relative;display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-location{font-size:12px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-actions{display:flex;align-items:center;margin-left:auto}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-follow-link{margin-left:auto;font-size:14px;font-weight:600;padding:0 12px}@media only screen and (max-width:319px){.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-follow-link{display:none}}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-follow-link a,.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-user-follow-link a:hover{color:#3897f0}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-instagram-link{margin-left:12px}@media only screen and (max-width:319px){.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-instagram-link{margin-left:0}}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-instagram-link-fixed{position:absolute;top:12px;right:12px;margin:0;padding:0;z-index:2}.eapps-instagram-feed-popup-item .eapps-instagram-feed-posts-item-instagram-link-fixed svg{color:#fff !important}.eapps-instagram-feed-popup-item-cta-button{display:block;position:relative;padding:12px;font-weight:600;transition:all .2s ease}a.eapps-instagram-feed-popup-item-cta-button{color:#3897f0;text-decoration:none;transition:all .2s ease}a.eapps-instagram-feed-popup-item-cta-button:hover{color:#3897f0;text-decoration:none;opacity:.9}.eapps-instagram-feed-popup-item-cta-button::after{content:'';display:block;position:absolute;right:12px;bottom:-1px;left:12px;background:#f1f1f1;height:1px}.eapps-instagram-feed-popup-item-cta-button-icon{display:block;width:6px;height:10px;position:absolute;top:50%;right:12px;margin-top:-5px;fill:currentColor}.eapps-instagram-feed-popup-item-cta-highlighted .eapps-instagram-feed-popup-item-cta-button{background:#3897f0;color:#fff}.eapps-instagram-feed-popup-item-cta-highlighted .eapps-instagram-feed-popup-item-cta-button::after{display:none}.eapps-instagram-feed-popup-item-cta-highlighted .eapps-instagram-feed-popup-item-cta-button:hover{background:#45a1f8;color:#fff}.eapps-instagram-feed-popup-item-content{width:100%;box-sizing:border-box;display:flex;flex-direction:column;position:relative;font-size:14px;padding:16px 12px 24px}.eapps-instagram-feed-popup-item-meta{display:flex;flex-direction:row;justify-content:space-between}.eapps-instagram-feed-popup-item-likes{font-weight:600}.eapps-instagram-feed-popup-item-share{margin-left:auto;display:flex;align-items:center;position:relative;font-size:14px;font-weight:400;cursor:pointer;margin-top:-4px;background:none;border:none}.eapps-instagram-feed-popup-item-share-icon{fill:currentColor}.eapps-instagram-feed-popup-item-share-label{margin-left:6px}.eapps-instagram-feed-popup-item-text{word-break:break-word;margin-top:12px}.eapps-instagram-feed-popup-item-text a,.eapps-instagram-feed-popup-item-text a:hover{color:#003569}a.eapps-instagram-feed-popup-item-text-author,a.eapps-instagram-feed-popup-item-text-author:hover{color:#000;font-weight:600}.eapps-instagram-feed-popup-item-comments-item{margin:8px 0}.eapps-instagram-feed-popup-item-comments-item-author{font-weight:600}.eapps-instagram-feed-popup-item-comments-item-text{word-break:break-word}.eapps-instagram-feed-popup-item-comments-item-text a,.eapps-instagram-feed-popup-item-comments-item-text a:hover{color:#003569}.eapps-instagram-feed-popup-item-comments-more a{opacity:.6}.eapps-instagram-feed-popup-item-date{font-size:10px;line-height:12px;text-transform:uppercase;margin-top:8px;opacity:.6}.eapps-instagram-feed-popup-item-media{position:absolute;right:0;left:0;overflow:hidden;min-height:300px;visibility:hidden}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-item-media{min-height:0}}.eapps-instagram-feed-popup-item-loaded .eapps-instagram-feed-popup-item-media{visibility:visible;position:relative}.eapps-instagram-feed-popup-item-media-image img{display:block;max-width:100%;margin:0 auto !important}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-item-media-image img{height:auto}}.eapps-instagram-feed-popup-item-media-video{position:relative}.eapps-instagram-feed-popup-item-media-video-placeholder{position:absolute;z-index:2;height:100%;width:100%;opacity:1;visibility:visible;display:flex;align-items:center;transition:opacity .3s,visibility .3s}.eapps-instagram-feed-popup-item-media-video-loaded .eapps-instagram-feed-popup-item-media-video-placeholder{opacity:0;visibility:hidden}.eapps-instagram-feed-popup-item-media-video-placeholder img{display:block;width:100%;max-width:100%;height:100%;max-height:100%;object-fit:cover}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-item-media-video-placeholder img{height:auto}}.eapps-instagram-feed-popup-item-media-video-placeholder-play{position:absolute;left:50%;top:50%;width:1.8em;height:1.8em;box-sizing:content-box;transform:translate(-50%,-50%);opacity:0;transition:opacity .3s;border:2px solid rgba(255,255,255,0.9);border-radius:50%;padding:10px 8px 10px 12px}.eapps-instagram-feed-popup-mobile .eapps-instagram-feed-popup-item-media-video-placeholder-play{opacity:1}.eapps-instagram-feed-popup-item-media-video-loading .eapps-instagram-feed-popup-item-media-video-placeholder-play{opacity:0}.eapps-instagram-feed-popup-item-media-video-placeholder-play svg{display:block;width:100%;height:100%;fill:rgba(255,255,255,0.9)}.eapps-instagram-feed-popup-item-media-video-placeholder-loader{position:absolute;top:.6em;right:.6em;width:1.8em;height:1.8em;opacity:0;transition:opacity .3s}.eapps-instagram-feed-popup-mobile .eapps-instagram-feed-popup-item-media-video-placeholder-loader{opacity:0}.eapps-instagram-feed-popup-item-media-video-loading .eapps-instagram-feed-popup-item-media-video-placeholder-loader{opacity:1}.eapps-instagram-feed-popup-item-media-video-placeholder-loader svg{display:block;width:100%;height:100%;fill:rgba(255,255,255,0.8)}.eapps-instagram-feed-popup-item-media-video-placeholder-loader svg circle{animation:eapps-instagram-feed-popup-item-media-video-placeholder-loader 1.5s linear infinite}.eapps-instagram-feed-popup-item-media-video-container{opacity:1;visibility:visible;position:relative;z-index:1}.eapps-instagram-feed-popup-item-media-video video{position:relative;z-index:1;display:none;width:100%;cursor:pointer;visibility:visible}.eapps-instagram-feed-popup-visible .eapps-instagram-feed-popup-item-media-video video{display:block !important;opacity:1 !important;visibility:visible !important}.eapps-instagram-feed-popup-item-media-video-sound{display:block;opacity:0;position:absolute;z-index:2;width:32px;height:32px;bottom:12px;left:12px;pointer-events:none;background:rgba(0,0,0,0.6);border-radius:50%;backface-visibility:hidden;transition:opacity .3s}.eapps-instagram-feed-popup-item-media-video-loaded .eapps-instagram-feed-popup-item-media-video-sound{opacity:1}.eapps-instagram-feed-popup-item-media-video-sound-off,.eapps-instagram-feed-popup-item-media-video-sound-on{width:16px;height:16px;display:block;position:absolute;top:50%;left:50%;margin:-8px 0 0 -8px}.eapps-instagram-feed-popup-item-media-video-sound-off path,.eapps-instagram-feed-popup-item-media-video-sound-on path{fill:#fff}.eapps-instagram-feed-popup-item-media-video-unmuted .eapps-instagram-feed-popup-item-media-video-sound-off{visibility:hidden;opacity:0}.eapps-instagram-feed-popup-item-media-video-sound-on{visibility:hidden;opacity:0}.eapps-instagram-feed-popup-item-media-video-unmuted .eapps-instagram-feed-popup-item-media-video-sound-on{visibility:visible;opacity:1}.eapps-instagram-feed-popup-item-media-carousel{background:#000}.eapps-instagram-feed-popup-item-media-carousel-inner{display:flex}.eapps-instagram-feed-popup-item-media-carousel-item{width:100%;flex-shrink:0}.eapps-instagram-feed-popup-item-media-carousel-arrow{display:block;background:none;border:none;outline:none;position:absolute;z-index:2;width:24px;height:40px;top:50%;margin:-20px 0 0 0;cursor:pointer;user-select:none;visibility:hidden;opacity:0;transform:scale(1);transition:all .2s ease}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-item-media-carousel-arrow{opacity:1;visibility:visible}}.eapps-instagram-feed-popup-item-media-carousel:hover .eapps-instagram-feed-popup-item-media-carousel-arrow:not(.eapps-instagram-feed-popup-item-media-carousel-arrow-disabled),.eapps-instagram-feed-popup-item-media-carousel:focus .eapps-instagram-feed-popup-item-media-carousel-arrow:not(.eapps-instagram-feed-popup-item-media-carousel-arrow-disabled){opacity:1;visibility:visible}.eapps-instagram-feed-popup-item-media-carousel-arrow-disabled{visibility:hidden;opacity:0;transform:scale(.85)}.eapps-instagram-feed-popup-item-media-carousel-arrow:hover,.eapps-instagram-feed-popup-item-media-carousel-arrow:focus{transform:scaleY(.9)}.eapps-instagram-feed-popup-item-media-carousel-arrow:focus-visible:not(.eapps-instagram-feed-popup-item-media-carousel-arrow-disabled){opacity:1;visibility:visible;outline:solid 1px #111;outline-offset:2px}.eapps-instagram-feed-popup-item-media-carousel-arrow::before,.eapps-instagram-feed-popup-item-media-carousel-arrow::after{background:rgba(255,255,255,0.9);display:block;position:absolute;width:28px;height:3px;top:20px;transition:all .3s ease;content:''}.eapps-instagram-feed-popup-item-media-carousel-arrow-prev{left:12px}.eapps-instagram-feed-popup-item-media-carousel-arrow-prev:active{transform:scaleY(.85) translateX(-20%)}.eapps-instagram-feed-popup-item-media-carousel-arrow-prev::before,.eapps-instagram-feed-popup-item-media-carousel-arrow-prev::after{border-radius:0 10px 10px 0}.eapps-instagram-feed-popup-item-media-carousel-arrow-prev::before{transform-origin:0 110%;transform:rotate(-45deg)}.eapps-instagram-feed-popup-item-media-carousel-arrow-prev::after{transform-origin:0 -10%;transform:rotate(45deg)}.eapps-instagram-feed-popup-item-media-carousel-arrow-next{right:12px}.eapps-instagram-feed-popup-item-media-carousel-arrow-next:active{transform:scaleY(.85) translateX(20%)}.eapps-instagram-feed-popup-item-media-carousel-arrow-next::before,.eapps-instagram-feed-popup-item-media-carousel-arrow-next::after{right:0;border-radius:10px 0 0 10px}.eapps-instagram-feed-popup-item-media-carousel-arrow-next::before{transform-origin:100% 110%;transform:rotate(45deg)}.eapps-instagram-feed-popup-item-media-carousel-arrow-next::after{transform-origin:100% -10%;transform:rotate(-45deg)}.eapps-instagram-feed-popup-item-media-carousel-pagination{display:flex;justify-content:center;position:absolute;right:12px;bottom:12px;left:12px;z-index:1;opacity:0;visibility:hidden;transition:all .2s ease}@media only screen and (max-width:639px){.eapps-instagram-feed-popup-item-media-carousel-pagination{opacity:1;visibility:visible}}.eapps-instagram-feed-popup-item-media-carousel:hover .eapps-instagram-feed-popup-item-media-carousel-pagination{opacity:1;visibility:visible}.eapps-instagram-feed-popup-item-media-carousel-pagination-item{display:block;width:12px;height:12px;cursor:pointer;padding:3px;box-sizing:border-box}.eapps-instagram-feed-popup-item-media-carousel-pagination-item::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);box-shadow:0 0 3px rgba(0,0,0,0.3);transition:all .2s ease}.eapps-instagram-feed-popup-item-media-carousel-pagination-item:hover::before{background:rgba(255,255,255,0.8)}.eapps-instagram-feed-popup-item-media-carousel-pagination-item-active::before{background:#fff}@-moz-keyframes eapps-instagram-feed-popup-item-media-video-placeholder-loader{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@-webkit-keyframes eapps-instagram-feed-popup-item-media-video-placeholder-loader{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@-o-keyframes eapps-instagram-feed-popup-item-media-video-placeholder-loader{0%{opacity:1}50%{opacity:0}100%{opacity:1}}@keyframes eapps-instagram-feed-popup-item-media-video-placeholder-loader{0%{opacity:1}50%{opacity:0}100%{opacity:1}}</style></head><body><div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto">
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20250225124521/http://stageslompoc.com/</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(775,27,25,2,"web","http://stageslompoc.com/","20250225124521",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ <header class="header">
+        <nav class="navbar">
+
+            <a href="#" class="nav-logo">HOME</a>
+
+
+<div id="TableSocial">
+  <div class="tableright">
+    <table>
+      <tbody><tr>
+        <th>
+                </th>
+        <th>
+          <a href="https://web.archive.org/web/20250225124521/https://m.facebook.com/StagesRehearsalStudio" target="_blank"><img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/facebook.svg" alt="facebook" width="50" height="50"></a>
+        </th>
+
+          <th>
+          <a href="https://web.archive.org/web/20250225124521/https://www.instagram.com/caseyfera/" target="_blank"><img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/instagram-round.svg" alt="instagram" width="50" height="50"></a>
+        </th>
+<th>
+          <a href="https://web.archive.org/web/20250225124521/https://www.youtube.com/watch?v=hj38V_JO2yY" target="_blank"><img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/youtube.svg" alt="instagram" width="50" height="50"></a>
+        </th>
+
+  </tr></tbody></table>
+  </div>
+  </div>
+
+
+
+
+            <ul class="nav-menu">
+
+
+
+
+
+
+
+
+
+                <li class="nav-item">
+                    <a href="#videos" class="nav-link">VIDEOS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#rec" class="nav-link">RECORDINGS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#merch" class="nav-link">MERCH</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#comedy" class="nav-link">COMEDY</a>
+                </li>
+  <li class="nav-item">
+                    <a href="#booking" class="nav-link">BOOKING</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+</header>
+
+
+
+
+<!-- old  html STAGES++++++++++++++++++++++++++++++++++++++=-->
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  
+    
+
+<nav>
+  <div class="logo">
+    <div class="shadow"><img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/logo.png" width="300" alt="stages">
     </div>
 
-    <div id="login-overlay" class="overlay" style="display:none;">
-        <div class="setup-card">
-            <h2 style="color:var(--gold);margin-bottom:20px;font-size:1.4rem;">DRAGONFLY TO TIE v2.6</h2>
-            <div id="email-step">
-                <input type="text" id="user-email" placeholder="Email Address" autocomplete="off" onkeydown="if(event.key==='Enter') handleLogin()">
-                <label style="display:flex;align-items:center;gap:8px;margin:12px auto 0;width:90%;cursor:pointer;font-size:0.75rem;color:rgba(255,255,255,0.6);text-align:left;">
-                   <input type="checkbox" id="marketing-consent" checked style="width:16px;height:16px;accent-color:var(--gold);flex-shrink:0;">
-                    Keep me updated on new features &amp; updates
-                </label>
-                <br>
-                <button class="main-deal-btn" onclick="handleLogin()" style="width:100%;font-size:1.1rem;padding:10px 0;">Access</button>
-            </div>
-            <div id="code-step" style="display:none;">
-                <p>Verification Code:</p>
-                <input type="text" id="access-code" placeholder="000000" onkeydown="if(event.key==='Enter') verifyCode()">
-                <br><br>
-                <button class="main-deal-btn" onclick="verifyCode()" style="width:100%;font-size:1.1rem;padding:10px 0;">Verify</button>
-            </div>
-            <p id="login-msg" style="font-size:0.85rem;margin-top:15px;color:var(--gold);min-height:1.2rem;"></p>
-        </div>
+   
     </div>
+   
+    
+    
+</nav>    
 
-    <div id="setup-overlay" class="overlay" style="display:none;">
-        <div class="setup-card">
-            <h2 style="color:var(--gold);font-size:1.4rem;">TABLE SETUP</h2>
-            <p style="margin:8px 0 4px;color:var(--gold);font-size:0.85rem;letter-spacing:1px;">CASINO MODE</p>
-            <div class="casino-mode-grid" id="casino-mode-grid"></div>
-            <p style="margin:14px 0 4px;">Initial Bankroll:</p>
-            <input type="number" id="start-balance" value="5000">
-            <p style="margin:8px 0 4px;">Shoe Size:</p>
-            <select id="shoe-size">
-                <option value="1">1 Deck</option>
-                <option value="6">6 Decks</option>
-                <option value="8" selected>8 Decks</option>
-                <option value="10">10 Decks</option>
-                <option value="12">12 Decks</option>
-                <option value="0">Infinite</option>
-            </select>
-            <br><br>
-            <button class="main-deal-btn" onclick="startGame()" style="width:100%;font-size:1.1rem;padding:10px 0;">Join Table</button>
-        </div>
-    </div>
 
-    <!-- Result Overlay -->
-    <div id="result-overlay" onclick="dismissResult()">
-        <div class="result-card" id="result-card">
-            <div class="result-title" id="result-title">WIN</div>
-            <div class="result-amount" id="result-amount">+$0</div>
-            <div id="result-detail" style="font-size:1rem;opacity:0.85;margin-bottom:4px;"></div>
-            <div class="result-tap">TAP TO CONTINUE</div>
-        </div>
-    </div>
 
-    <div class="game-content" id="game-container" style="display:none;">
+STAGES
+rehearsal space and events venue
+(since 2010) 
+  
+<br>
+<br>
+<br>
 
-        <div class="header-area">
-            <div class="header-title">DRAGONFLY TO TIE <span style="font-size:0.9rem;vertical-align:middle;opacity:0.7;">v2.6</span></div>
-            <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
-            <button id="sound-toggle-btn" class="settings-btn" onclick="toggleSound()" style="right:54px;" title="Toggle Sound">🔊</button>
-        </div>
 
-        <div class="casino-banner" id="casino-banner"></div>
 
-        <div class="casino-table" id="casino-table-el">
-            <div class="table-score-header">
-                <span style="color:#9ec2ff;">PLAYER: <span id="p-score">0</span></span>
-                <span style="color:#ff9e9e;">BANKER: <span id="b-score">0</span></span>
-            </div>
-            <div class="cards-felt-area">
-                <div class="card-slots-group" id="p-cards">
-                    <div class="card-placeholder-box"></div>
-                    <div class="card-placeholder-box"></div>
-                </div>
-                <div class="card-slots-group" id="b-cards">
-                    <div class="card-placeholder-box"></div>
-                    <div class="card-placeholder-box"></div>
-                </div>
-            </div>
-            <div class="betting-layout">
-                <div class="row-main-bets">
-                    <div id="bet-player-box" class="bet-zone zone-player" onclick="placeBet('player')">
-                        <div class="bet-title-text">PLAYER</div>
-                        <div class="bet-sub-text" id="player-odds-label">1:1</div>
-                        <div class="bet-value-text" id="disp-player">$0</div>
-                    </div>
-                    <div id="bet-tie-box" class="bet-zone zone-tie" onclick="placeBet('tie')">
-                        <div class="bet-title-text" style="color:var(--gold);">TIE</div>
-                        <div class="bet-sub-text" id="tie-odds-label">8:1</div>
-                        <div class="bet-value-text" id="disp-tie">$0</div>
-                    </div>
-                    <div id="bet-banker-box" class="bet-zone zone-banker" onclick="placeBet('banker')">
-                        <div class="bet-title-text">BANKER</div>
-                        <div class="bet-sub-text" id="banker-odds-label">0.95:1</div>
-                        <div class="bet-value-text" id="disp-banker">$0</div>
-                    </div>
-                </div>
-                <div class="row-side-bets" id="side-bets-row"></div>
-            </div>
-            <div id="special-notifications" style="min-height:1.2rem;text-align:center;margin-top:8px;font-weight:bold;font-size:1rem;"></div>
-        </div>
 
-        <div class="controls-row">
-            <div class="chip-tray">
-                <div class="chip c1" onclick="selectChip(1,this)">$1</div>
-                <div class="chip c5" onclick="selectChip(5,this)">$5</div>
-                <div class="chip c25 active" onclick="selectChip(25,this)">$25</div>
-                <div class="chip c50" onclick="selectChip(50,this)">$50</div>
-                <div class="chip c100" onclick="selectChip(100,this)">$100</div>
-                <div class="chip c500" onclick="selectChip(500,this)">$500</div>
-                <div class="chip c1000" onclick="selectChip(1000,this)">$1k</div>
-            </div>
-            <div class="action-buttons-group">
-                <button id="btn-rebet" class="aux-btn" onclick="reBet()" disabled title="Repeat last bet">↩ REBET</button>
-                <button id="btn-double" class="aux-btn" onclick="doubleBet()" disabled title="Double current bets">✕2 DOUBLE</button>
-                <button onclick="clearBets()" class="clear-btn">CLEAR</button>
-                <button class="main-deal-btn" onclick="playHand()">DEAL</button>
-            </div>
-        </div>
+  
 
-        <div class="top-dashboards">
-            <div class="dashboard-box">
-                <div class="dashboard-title">FINANCIALS</div>
-                <div class="fin-row"><span>BANKROLL:</span><span class="balance-label" style="color:#fff;font-weight:bold;">$0.00</span></div>
-                <div class="fin-row"><span>SESSION P/L:</span><span class="session-pl-label">$0.00</span></div>
-                <div class="fin-row"><span>SHOE CARDS:</span><span class="shoe-count-label" style="color:var(--gold);">0</span></div>
-                <div class="fin-row"><span>B:</span><span id="stat-b" style="color:#ff9e9e;">0</span>
-                    &nbsp;<span>P:</span><span id="stat-p" style="color:#9ec2ff;">0</span>
-                    &nbsp;<span>T:</span><span id="stat-t" style="color:#7dff7d;">0</span></div>
-            </div>
-            <div class="dashboard-box">
-                <div class="dashboard-title" style="position:relative;">
-                    SHOE INSPECTOR
-                    <button onclick="toggleShoeVisibility()" style="position:absolute;right:0;top:0;background:none;border:none;color:var(--gold);cursor:pointer;font-size:0.75rem;">[TOGGLE]</button>
-                </div>
-                <div id="shoe-preview-el" class="shoe-preview-container" style="display:none;"></div>
-                <div class="inspector-placeholder-label" id="inspector-placeholder">Inspector Engine Standby</div>
-            </div>
-        </div>
+  <div class="backgroundPurple">
+    
+    <!--START OF IMG SLIDE SHOW AT THE TOP HTLM(LMH,CF) -->
 
-        <div class="roads-section">
+  <!-- Elfsight Instagram Feed | STAGES LOMPOC Instagram Feed -->
+<script src="https://web.archive.org/web/20250225124521js_/https://static.elfsight.com/platform/platform.js" async=""></script>
+    <div class="elfsight-app-9d13cf6c-41d5-4dfa-8820-d74f17d63aa2" data-elfsight-app-lazy=""></div>
 
-            <!-- Row 1: Bead Plate — full width -->
-            <div class="road-row-bead">
-                <div class="road-box">
-                    <div class="road-title">🔵 ROAD (珠盘路)</div>
-                    <div class="road-canvas-wrap">
-                        <div class="road-zoom-container" id="zoom-bead">
-                            <div class="road-zoom-inner">
-                                <div class="bead-plate" id="road-bead"></div>
-                            </div>
-                            <span class="zoom-hint">pinch/dbl-tap to zoom</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Row 2: Big Road — full width -->
-            <div class="road-row-big">
-                <div class="road-box">
-                    <div class="road-title">🔴 BIG ROAD (大路)</div>
-                    <div class="road-canvas-wrap">
-                        <div class="road-zoom-container" id="zoom-big">
-                            <div class="road-zoom-inner">
-                                <div class="big-road-wrap"><div class="big-road-grid" id="road-big"></div></div>
-                            </div>
-                            <span class="zoom-hint">pinch/dbl-tap to zoom</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
 
-            <!-- Row 3: Derived roads — 3 equal columns -->
-            <div class="road-row-derived">
-                <div class="road-box">
-                    <div class="road-title">👁 BIG EYE BOY (大眼仔)</div>
-                    <div class="road-canvas-wrap">
-                        <div class="road-zoom-container" id="zoom-beb">
-                            <div class="road-zoom-inner">
-                                <div class="derived-road-wrap"><div class="derived-road-grid" id="road-beb"></div></div>
-                            </div>
-                            <span class="zoom-hint">pinch/dbl-tap to zoom</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="road-box">
-                    <div class="road-title">📍 SMALL ROAD (小路)</div>
-                    <div class="road-canvas-wrap">
-                        <div class="road-zoom-container" id="zoom-small">
-                            <div class="road-zoom-inner">
-                                <div class="derived-road-wrap"><div class="derived-road-grid" id="road-small"></div></div>
-                            </div>
-                            <span class="zoom-hint">pinch/dbl-tap to zoom</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="road-box">
-                    <div class="road-title">🪳 COCKROACH PIG (曱甴路)</div>
-                    <div class="road-canvas-wrap">
-                        <div class="road-zoom-container" id="zoom-cock">
-                            <div class="road-zoom-inner">
-                                <div class="derived-road-wrap"><div class="derived-road-grid" id="road-cock"></div></div>
-                            </div>
-                            <span class="zoom-hint">pinch/dbl-tap to zoom</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="w3-content w3-section" style="max-width:500px">
+    
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/girl.webp" style="width: 49%; display: none; margin-left: auto; margin-right: auto;">
 
-        </div>
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/band3.webp" style="width: 100%; padding-top: 25px; display: none;">
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/band2.webp" style="width: 100%; padding-top: 25px; display: none;">
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/band.webp" style="width: 100%; padding-top: 25px; display: none;">
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/blueroom.webp" style="width: 100%; padding-top: 10px; display: block;">
+<img class="topSlides" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/jacobcole.webp" style="width: 100%; padding-top: 25px; display: none;">
 
-        <div class="coffee-link-wrapper" style="width:100%;max-width:240px;margin:6px auto 0 auto;">
-            <a href="https://buymeacoffee.com/baccaratfunk/the-motion-energy" target="_blank" class="coffee-link">☕ Buy me a cup of coffee</a>
-        </div>
-    </div>
+
+
+
+
+</div>
 
 <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHrUd-Hyi-FST4-YD34GHFOXHFbRscOuTKbqbDn6v7WjkolDx8wKbUX3JxIJ1jhLc/exec';
+var myIndex = 0;
+carousel();
 
-    // ══════════════════════════════════════════════════════════
-    //  SESSION MANAGEMENT
-    // ══════════════════════════════════════════════════════════
-    const SESSION_EMAIL_KEY = 'df_email';
-    const SESSION_TOKEN_KEY = 'df_session';
-
-    // Called on page load — checks localStorage for a saved session and validates it
-    async function checkExistingSession() {
-        const savedEmail = localStorage.getItem(SESSION_EMAIL_KEY);
-        const savedToken = localStorage.getItem(SESSION_TOKEN_KEY);
-
-        if (!savedEmail || !savedToken) {
-            hideSplash();
-            showLoginOverlay();
-            return;
-        }
-
-        try {
-            const r = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(savedEmail)}&token=${encodeURIComponent(savedToken)}&sessionCheck=true`);
-            const result = await r.text();
-
-            if (result === 'SessionValid') {
-                userEmail = savedEmail;
-                hideSplash();
-                buildCasinoGrid();
-                document.getElementById('setup-overlay').style.display = 'flex';
-            } else {
-                // Expired or invalid — clear and show login
-                localStorage.removeItem(SESSION_EMAIL_KEY);
-                localStorage.removeItem(SESSION_TOKEN_KEY);
-                hideSplash();
-                showLoginOverlay();
-            }
-        } catch (e) {
-            // Network error — fall through to login
-            hideSplash();
-            showLoginOverlay();
-        }
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("topSlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
     }
-
-    function hideSplash() {
-        document.getElementById('session-check-overlay').style.display = 'none';
-    }
-
-    function showLoginOverlay() {
-        document.getElementById('login-overlay').style.display = 'flex';
-    }
-
-    // Save session token returned by backend after successful code verification
-    function saveSession(email, token) {
-        localStorage.setItem(SESSION_EMAIL_KEY, email);
-        localStorage.setItem(SESSION_TOKEN_KEY, token);
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  CASINO MODE DEFINITIONS
-    // ══════════════════════════════════════════════════════════
-    const CASINO_MODES = [
-        {
-            id: 'default',
-            name: 'Classic',
-            location: 'Standard Rules',
-            flag: '🎴',
-            feltColor: '#0a4d2c',
-            woodColor: '#3e2723',
-            playerOdds: 1, bankerOdds: 0.95, tieOdds: 8,
-            bankerCommission: 0.05,
-            sideBets: ['panda','dragon'],
-            description: 'Classic baccarat, Panda 8 & Dragon 7',
-            tableTag: 'Standard Commission'
-        },
-        {
-            id: 'macau',
-            name: 'Galaxy Macau',
-            location: 'Macau, China',
-            flag: '🇲🇴',
-            feltColor: '#0d3d1a',
-            woodColor: '#2c1810',
-            playerOdds: 1, bankerOdds: 0.95, tieOdds: 8,
-            bankerCommission: 0.05,
-            sideBets: ['panda','dragon','lucky6'],
-            description: 'Galaxy Macau — Lucky 6 side bet',
-            tableTag: '5% Commission · Lucky 6'
-        },
-        {
-            id: 'wynn',
-            name: 'Wynn Las Vegas',
-            location: 'Las Vegas, USA',
-            flag: '🇺🇸',
-            feltColor: '#1a2a0a',
-            woodColor: '#1a1a2e',
-            playerOdds: 1, bankerOdds: 0.95, tieOdds: 8,
-            bankerCommission: 0.05,
-            sideBets: ['panda','dragon','bonus'],
-            description: 'Wynn Las Vegas — EZ & Bonus bets',
-            tableTag: '5% Commission · Bonus'
-        },
-        {
-            id: 'ez',
-            name: 'EZ Baccarat',
-            location: 'Commission-Free',
-            flag: '🃏',
-            feltColor: '#0a2040',
-            woodColor: '#1a0a2e',
-            playerOdds: 1, bankerOdds: 1, tieOdds: 8,
-            bankerCommission: 0,
-            sideBets: ['panda','dragon'],
-            description: 'No commission — Banker 3-card 7 is PUSH (bet Dragon 7!)',
-            tableTag: 'Commission-Free · Dragon 7 Push',
-            ezMode: true
-        },
-        {
-            id: 'marina',
-            name: 'Marina Bay Sands',
-            location: 'Singapore',
-            flag: '🇸🇬',
-            feltColor: '#0a1a3a',
-            woodColor: '#1a2a0e',
-            playerOdds: 1, bankerOdds: 0.95, tieOdds: 8,
-            bankerCommission: 0.05,
-            sideBets: ['super6','tiger'],
-            description: 'Marina Bay Sands — Super 6 & Tiger',
-            tableTag: 'Super 6 · Tiger Bet'
-        },
-        {
-            id: 'venetian',
-            name: 'The Venetian',
-            location: 'Las Vegas / Macau',
-            flag: '🏛️',
-            feltColor: '#1a0a0a',
-            woodColor: '#2e1a0a',
-            playerOdds: 1, bankerOdds: 0.95, tieOdds: 8,
-            bankerCommission: 0.05,
-            sideBets: ['panda','dragon','natural'],
-            description: 'The Venetian — Natural 8/9 Bonus',
-            tableTag: '5% Commission · Natural Bonus'
-        }
-    ];
-
-    const SIDE_BET_DEFS = {
-        panda:   { key:'panda',   label:'🐼 PANDA 8',   cls:'zone-panda',   sub:'25:1',  desc:'Player 3-card 8 wins' },
-        dragon:  { key:'dragon',  label:'🐉 DRAGON 7',  cls:'zone-dragon',  sub:'40:1',  desc:'Banker 3-card 7 wins' },
-        lucky6:  { key:'lucky6',  label:'🍀 LUCKY 6',   cls:'zone-lucky6',  sub:'12:1 / 20:1', desc:'Banker wins with 6' },
-        tiger:   { key:'tiger',   label:'🐯 TIGER',     cls:'zone-tiger',   sub:'9:1',   desc:'Banker wins w/ 6 (2-card)' },
-        super6:  { key:'super6',  label:'⑥ SUPER 6',   cls:'zone-super6',  sub:'12:1',  desc:'Banker wins with 6' },
-        bonus:   { key:'bonus',   label:'★ BONUS',      cls:'zone-bonus',   sub:'Varies', desc:'Win margin 4+ pays bonus' },
-        natural: { key:'natural', label:'✨ NATURAL',   cls:'zone-natural', sub:'Varies', desc:'Natural 8 or 9 bonus' },
-    };
-
-    // ══════════════════════════════════════════════════════════
-    //  STATE
-    // ══════════════════════════════════════════════════════════
-    let bankroll = 0, initialBankroll = 0, selectedChipValue = 25, userEmail = "";
-    let currentBets = {};
-    let lastBets = {};
-    let stats = { banker:0, player:0, tie:0 };
-    let shoe = [], shoeSize = 8, shoeVisible = false;
-    let selectedCasino = CASINO_MODES[0];
-
-    let beadHistory = [];
-    let bigRoadColumns = [];
-    let bigRoadCurrentCol = 0;
-    let bigRoadLastNonTie = null;
-    let bebEntries = [];
-    let smallEntries = [];
-    let cockEntries = [];
-
-    // ══════════════════════════════════════════════════════════
-    //  CASINO GRID
-    // ══════════════════════════════════════════════════════════
-    function buildCasinoGrid() {
-        const grid = document.getElementById('casino-mode-grid');
-        grid.innerHTML = '';
-        CASINO_MODES.forEach(c => {
-            const card = document.createElement('div');
-            card.className = 'casino-card' + (c.id === selectedCasino.id ? ' selected' : '');
-            card.onclick = () => selectCasinoMode(c.id);
-            card.innerHTML = `
-                <div style="display:flex;align-items:center;gap:6px;">
-                    <span class="casino-card-flag">${c.flag}</span>
-                    <div>
-                        <div class="casino-card-name">${c.name}</div>
-                        <div class="casino-card-loc">${c.location}</div>
-                    </div>
-                    <span class="casino-card-check">✓</span>
-                </div>
-                <div class="casino-card-tag">${c.tableTag}</div>
-            `;
-            grid.appendChild(card);
-        });
-    }
-
-    function selectCasinoMode(id) {
-        selectedCasino = CASINO_MODES.find(c => c.id === id) || CASINO_MODES[0];
-        buildCasinoGrid();
-    }
-
-    function initBetKeys() {
-        const keys = ['player','banker','tie', ...selectedCasino.sideBets];
-        currentBets = {};
-        lastBets = {};
-        keys.forEach(k => { currentBets[k] = 0; lastBets[k] = 0; });
-    }
-
-    function buildSideBetZones() {
-        const row = document.getElementById('side-bets-row');
-        row.innerHTML = '';
-        selectedCasino.sideBets.forEach(key => {
-            const def = SIDE_BET_DEFS[key];
-            if (!def) return;
-            const el = document.createElement('div');
-            el.id = `bet-${key}-box`;
-            el.className = `bet-zone ${def.cls}`;
-            el.onclick = () => placeBet(key);
-            el.innerHTML = `
-                <div class="bet-title-text" style="font-size:1.1rem;">${def.label}</div>
-                <div class="bet-sub-text">${def.sub}</div>
-                <div class="bet-value-text" id="disp-${key}">$0</div>
-            `;
-            row.appendChild(el);
-        });
-    }
-
-    function applyCasinoTheme() {
-        const tbl = document.getElementById('casino-table-el');
-        tbl.style.background = selectedCasino.feltColor;
-        tbl.style.borderColor = selectedCasino.woodColor;
-        document.getElementById('player-odds-label').textContent = selectedCasino.playerOdds + ':1';
-        document.getElementById('banker-odds-label').textContent = selectedCasino.bankerOdds + ':1' + (selectedCasino.bankerCommission > 0 ? ' (-5%)' : '');
-        document.getElementById('tie-odds-label').textContent = selectedCasino.tieOdds + ':1';
-        const banner = document.getElementById('casino-banner');
-        banner.innerHTML = `<strong>${selectedCasino.flag} ${selectedCasino.name}</strong> &nbsp;·&nbsp; ${selectedCasino.location} &nbsp;·&nbsp; ${selectedCasino.description}`;
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  LOGIN / AUTH
-    // ══════════════════════════════════════════════════════════
-    function handleLogin() {
-        const input = document.getElementById('user-email').value.trim().toLowerCase();
-        if (input === "dragonfly") {
-            document.getElementById('login-overlay').style.display = 'none';
-            document.getElementById('setup-overlay').style.display = 'flex';
-            buildCasinoGrid();
-        } else if (input.includes("@")) {
-            sendCode();
-        } else {
-            const msg = document.getElementById('login-msg');
-            msg.style.color = "#ff4444";
-            msg.textContent = "Invalid Credentials";
-        }
-    }
-
-    async function sendCode() {
-        userEmail = document.getElementById('user-email').value.trim();
-        const msg = document.getElementById('login-msg');
-        msg.style.color = "var(--gold)";
-        msg.textContent = "Checking server...";
-        try {
-            const consent = document.getElementById('marketing-consent') ? document.getElementById('marketing-consent').checked : false;
-        const r = await fetch(SCRIPT_URL + "?email=" + encodeURIComponent(userEmail) + "&consent=" + consent, { method: 'POST' });
-            const result = await r.text();
-            if (result === "Quota Exceeded") {
-                msg.style.color = "#ff4444";
-                msg.textContent = "Google Daily Email Limit Reached.";
-            } else {
-                document.getElementById('email-step').style.display = 'none';
-                document.getElementById('code-step').style.display = 'block';
-                msg.textContent = "Code sent! Valid for 5 minutes.";
-            }
-        } catch(e) {
-            msg.textContent = "Connection error.";
-        }
-    }
-
-    async function verifyCode() {
-        const token = document.getElementById('access-code').value.trim();
-        const msg = document.getElementById('login-msg');
-        msg.style.color = "var(--gold)";
-        msg.textContent = "Verifying...";
-        try {
-            const r = await fetch(`${SCRIPT_URL}?email=${encodeURIComponent(userEmail)}&token=${encodeURIComponent(token)}`);
-            const result = await r.text();
-
-            // Backend now returns "Verified:<sessionToken>" instead of just "Verified"
-            if (result.startsWith('Verified:')) {
-                const sessionToken = result.split(':')[1];
-                saveSession(userEmail, sessionToken);
-                document.getElementById('login-overlay').style.display = 'none';
-                buildCasinoGrid();
-                document.getElementById('setup-overlay').style.display = 'flex';
-            } else if (result === 'Verified') {
-                // Fallback: backend not yet updated — still let them in, just no session saved
-                document.getElementById('login-overlay').style.display = 'none';
-                buildCasinoGrid();
-                document.getElementById('setup-overlay').style.display = 'flex';
-            } else {
-                msg.style.color = "#ff4444";
-                msg.textContent = "Invalid or expired code.";
-            }
-        } catch(e) {
-            msg.style.color = "#ff4444";
-            msg.textContent = "Verification error.";
-        }
-    }
-
-    function toggleSettings() {
-        buildCasinoGrid();
-        document.getElementById('setup-overlay').style.display = 'flex';
-    }
-
-    function startGame() {
-        const val = parseInt(document.getElementById('start-balance').value);
-        if (initialBankroll === 0) initialBankroll = val;
-        bankroll = val;
-        shoeSize = parseInt(document.getElementById('shoe-size').value);
-        initBetKeys();
-        buildSideBetZones();
-        applyCasinoTheme();
-        initShoe();
-        beadHistory = []; bigRoadColumns = []; bigRoadCurrentCol = 0; bigRoadLastNonTie = null;
-        bebEntries = []; smallEntries = []; cockEntries = [];
-        stats = { banker:0, player:0, tie:0 };
-        updateAuxButtons();
-        document.getElementById('setup-overlay').style.display = 'none';
-        document.getElementById('game-container').style.display = 'flex';
-        renderAllRoads();
-        updateUI();
-        // Init zoom on all scoreboards (small delay to ensure layout is ready)
-        setTimeout(initAllZoom, 100);
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  SHOE
-    // ══════════════════════════════════════════════════════════
-    function initShoe() {
-        sfxShuffle();
-        if (shoeSize === 0) { shoe = []; return; }
-        shoe = [];
-        for (let i=0; i<shoeSize*52; i++) shoe.push((i%13)+1);
-        for (let i=shoe.length-1; i>0; i--) { const j=Math.floor(Math.random()*(i+1)); [shoe[i],shoe[j]]=[shoe[j],shoe[i]]; }
-    }
-
-    function getNextCard() {
-        if (shoeSize===0) return Math.floor(Math.random()*13)+1;
-        if (shoe.length < 10) initShoe();
-        return shoe.pop();
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  BETTING
-    // ══════════════════════════════════════════════════════════
-    function selectChip(val, el) {
-        selectedChipValue = val;
-        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-        el.classList.add('active');
-        sfxChip();
-    }
-
-    function placeBet(type) {
-        if (!(type in currentBets)) return;
-        if (bankroll < selectedChipValue) return;
-        currentBets[type] += selectedChipValue;
-        bankroll -= selectedChipValue;
-        const disp = document.getElementById(`disp-${type}`);
-        if (disp) disp.textContent = `$${currentBets[type]}`;
-        sfxBetPlace();
-        updateUI();
-        updateAuxButtons();
-    }
-
-    function clearBets() {
-        sfxClear();
-        for (let k in currentBets) {
-            bankroll += currentBets[k];
-            currentBets[k] = 0;
-            const disp = document.getElementById(`disp-${k}`);
-            if (disp) disp.textContent = "$0";
-        }
-        updateUI();
-        updateAuxButtons();
-    }
-
-    function updateAuxButtons() {
-        const total = Object.values(currentBets).reduce((a,b)=>a+b,0);
-        const lastTotal = Object.values(lastBets).reduce((a,b)=>a+b,0);
-        document.getElementById('btn-double').disabled = total === 0;
-        document.getElementById('btn-rebet').disabled = lastTotal === 0;
-    }
-
-    function reBet() {
-        clearBets();
-        const lastTotal = Object.values(lastBets).reduce((a,b)=>a+b,0);
-        if (bankroll < lastTotal) return;
-        for (let k in lastBets) {
-            if (lastBets[k] > 0 && k in currentBets) {
-                currentBets[k] = lastBets[k];
-                bankroll -= lastBets[k];
-                const disp = document.getElementById(`disp-${k}`);
-                if (disp) disp.textContent = `$${currentBets[k]}`;
-            }
-        }
-        updateUI();
-        updateAuxButtons();
-    }
-
-    function doubleBet() {
-        const total = Object.values(currentBets).reduce((a,b)=>a+b,0);
-        if (total === 0 || bankroll < total) return;
-        for (let k in currentBets) {
-            if (currentBets[k] > 0) {
-                const add = currentBets[k];
-                if (bankroll >= add) {
-                    currentBets[k] += add;
-                    bankroll -= add;
-                    const disp = document.getElementById(`disp-${k}`);
-                    if (disp) disp.textContent = `$${currentBets[k]}`;
-                }
-            }
-        }
-        updateUI();
-        updateAuxButtons();
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  SOUND ENGINE
-    // ══════════════════════════════════════════════════════════
-    let _actx = null;
-    let soundEnabled = true;
-
-    function getACtx() {
-        if (!_actx) _actx = new (window.AudioContext || window.webkitAudioContext)();
-        if (_actx.state === 'suspended') _actx.resume();
-        return _actx;
-    }
-
-    function _tone(type, freq, dur, vol, attack=0.005, decay=0, sustain=1, release=0.05, startTime=null) {
-        if (!soundEnabled) return;
-        try {
-            const ctx = getACtx();
-            const t = startTime ?? ctx.currentTime;
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.connect(gain); gain.connect(ctx.destination);
-            osc.type = type; osc.frequency.setValueAtTime(freq, t);
-            gain.gain.setValueAtTime(0, t);
-            gain.gain.linearRampToValueAtTime(vol, t + attack);
-            if (decay > 0) gain.gain.linearRampToValueAtTime(vol * sustain, t + attack + decay);
-            gain.gain.setValueAtTime(vol * sustain, t + dur - release);
-            gain.gain.linearRampToValueAtTime(0, t + dur);
-            osc.start(t); osc.stop(t + dur + 0.01);
-        } catch(e) {}
-    }
-
-    function _noise(dur, vol, filterFreq=2000, startTime=null) {
-        if (!soundEnabled) return;
-        try {
-            const ctx = getACtx();
-            const t = startTime ?? ctx.currentTime;
-            const bufSize = Math.ceil(ctx.sampleRate * dur);
-            const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
-            const data = buf.getChannelData(0);
-            for (let i=0; i<bufSize; i++) data[i] = (Math.random()*2-1);
-            const src = ctx.createBufferSource();
-            src.buffer = buf;
-            const filter = ctx.createBiquadFilter();
-            filter.type = 'bandpass';
-            filter.frequency.value = filterFreq;
-            filter.Q.value = 0.8;
-            const gain = ctx.createGain();
-            gain.gain.setValueAtTime(vol, t);
-            gain.gain.linearRampToValueAtTime(0, t + dur);
-            src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-            src.start(t); src.stop(t + dur + 0.01);
-        } catch(e) {}
-    }
-
-    function sfxChip() { _tone('square', 1200, 0.04, 0.18, 0.002, 0, 1, 0.03); _noise(0.04, 0.12, 3500); }
-    function sfxBetPlace() { _tone('triangle', 900, 0.07, 0.22, 0.003, 0.01, 0.6, 0.05); _noise(0.06, 0.1, 2800); }
-    function sfxDeal(cardIndex) {
-        const delay = cardIndex * 0.13;
-        try { const ctx = getACtx(); const t = ctx.currentTime + delay; _noise(0.09, 0.28, 4000, t); _tone('sawtooth', 180, 0.07, 0.06, 0.002, 0, 1, 0.04, t); } catch(e) {}
-    }
-    function sfxWin() {
-        const notes = [523, 659, 784, 1047];
-        notes.forEach((f, i) => { try { const ctx = getACtx(); const t = ctx.currentTime + i * 0.1; _tone('sine', f, 0.35, 0.3, 0.01, 0, 0.7, 0.2, t); _tone('triangle', f * 2, 0.1, 0.06, 0.005, 0, 1, 0.05, t); } catch(e) {} });
-    }
-    function sfxJackpot() {
-        const seq = [523, 659, 784, 659, 1047, 880, 1047];
-        seq.forEach((f, i) => { try { const ctx = getACtx(); const t = ctx.currentTime + i * 0.1; _tone('sine', f, 0.25, 0.35, 0.01, 0, 0.8, 0.1, t); _tone('square', f / 2, 0.25, 0.08, 0.01, 0, 0.5, 0.1, t); if (i === seq.length-1) _tone('sine', f, 0.4, 0.4, 0.01, 0, 0.9, 0.3, t+0.05); } catch(e) {} });
-        _noise(0.6, 0.08, 6000);
-    }
-    function sfxLose() {
-        const notes = [440, 370, 311];
-        notes.forEach((f, i) => { try { const ctx = getACtx(); const t = ctx.currentTime + i * 0.12; _tone('sine', f, 0.3, 0.22, 0.01, 0, 0.6, 0.2, t); } catch(e) {} });
-    }
-    function sfxTie() {
-        _tone('sine', 440, 0.15, 0.2, 0.01, 0, 0.8, 0.08);
-        try { const ctx = getACtx(); _tone('sine', 554, 0.15, 0.2, 0.01, 0, 0.8, 0.08, ctx.currentTime + 0.18); } catch(e) {}
-    }
-    function sfxClear() { _tone('triangle', 350, 0.08, 0.15, 0.005, 0, 1, 0.06); }
-    function sfxShuffle() { for (let i=0; i<5; i++) { try { const ctx = getACtx(); _noise(0.1, 0.18, 3000 + i*400, ctx.currentTime + i*0.07); } catch(e) {} } }
-    function toggleSound() {
-        soundEnabled = !soundEnabled;
-        const btn = document.getElementById('sound-toggle-btn');
-        if (btn) btn.textContent = soundEnabled ? '🔊' : '🔇';
-        if (soundEnabled) sfxChip();
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  GAME LOGIC
-    // ══════════════════════════════════════════════════════════
-    function playHand() {
-        document.querySelectorAll('.bet-zone').forEach(z=>z.classList.remove('win-flash'));
-        document.getElementById('special-notifications').innerHTML='';
-        sfxDeal(0); sfxDeal(1); sfxDeal(2); sfxDeal(3);
-        const gV=(v)=>v>=10?0:v;
-        let p=[getNextCard(),getNextCard()], b=[getNextCard(),getNextCard()];
-        let pS=(gV(p[0])+gV(p[1]))%10, bS=(gV(b[0])+gV(b[1]))%10;
-        if (pS<=5 && bS<8) {
-            let p3=getNextCard(); p.push(p3); pS=(pS+gV(p3))%10;
-            let dB=false, p3v=gV(p3);
-            if(bS<=2) dB=true;
-            else if(bS===3&&p3v!==8) dB=true;
-            else if(bS===4&&[2,3,4,5,6,7].includes(p3v)) dB=true;
-            else if(bS===5&&[4,5,6,7].includes(p3v)) dB=true;
-            else if(bS===6&&[6,7].includes(p3v)) dB=true;
-            if(dB){ b.push(getNextCard()); bS=(bS+gV(b[b.length-1]))%10; }
-        } else if(bS<=5&&pS>=6&&pS<8){ b.push(getNextCard()); bS=(bS+gV(b[b.length-1]))%10; }
-        renderHand(p,b,pS,bS);
-        resolve(p,b,pS,bS);
-    }
-
-    function renderHand(p,b,pS,bS) {
-        const s=['♠','♥','♦','♣'];
-        const mk=(v)=>{let st=s[Math.floor(Math.random()*4)],lbl=v===1?'A':v===11?'J':v===12?'Q':v===13?'K':v; return `<div class="card ${st==='♥'||st==='♦'?'red':''}"><div>${lbl}</div><div style="font-size:1.4rem;align-self:center;line-height:1;">${st}</div></div>`;};
-        document.getElementById('p-cards').innerHTML=p.map(mk).join('');
-        document.getElementById('b-cards').innerHTML=b.map(mk).join('');
-        document.getElementById('p-score').textContent=pS;
-        document.getElementById('b-score').textContent=bS;
-    }
-
-    function flash(id) {
-        const el = document.getElementById(id);
-        if (el) el.classList.add('win-flash');
-    }
-
-    function resolve(p, b, pS, bS) {
-        let win = 0;
-        const drg = bS===7 && b.length===3 && bS>pS;
-        const pnd = pS===8 && p.length===3 && pS>bS;
-        const c = selectedCasino;
-        let outcomeType, beadClass, beadLabel;
-        const totalWagered = Object.values(currentBets).reduce((a,v)=>a+v, 0);
-        let specialMsg = '';
-        let notifications = [];
-
-        if (pS === bS) {
-            win += currentBets.tie * (c.tieOdds + 1);
-            win += (currentBets.player||0) + (currentBets.banker||0);
-            stats.tie++;
-            beadClass='tie'; beadLabel='T'; outcomeType='tie';
-            flash('bet-tie-box');
-
-        } else if (pS > bS) {
-            stats.player++;
-            if (pnd) {
-                win += (currentBets.panda||0) * 26;
-                win += (currentBets.player||0) * (1 + c.playerOdds);
-                beadClass='panda-win'; beadLabel='P8'; outcomeType='player';
-                flash('bet-panda-box'); flash('bet-player-box');
-                notifications.push(`<span class="win-badge" style="background:var(--panda-purple);border:1px solid white;">PANDA 8 WIN!</span>`);
-                specialMsg = '🐼 PANDA 8!';
-            } else {
-                win += (currentBets.player||0) * (1 + c.playerOdds);
-                beadClass='player'; beadLabel='P'; outcomeType='player';
-                flash('bet-player-box');
-            }
-            if (currentBets.natural > 0) {
-                const isNatural = p.length===2 && (pS===8||pS===9);
-                if (isNatural) {
-                    const naturalPay = pS===9 ? 8 : 6;
-                    win += (currentBets.natural||0) * (naturalPay + 1);
-                    notifications.push(`<span class="win-badge" style="background:var(--dragon-orange);">NATURAL ${pS} +${naturalPay}:1!</span>`);
-                }
-            }
-            if (currentBets.bonus > 0) {
-                const margin = pS - bS;
-                const bonusPay = margin>=9?30:margin>=8?10:margin>=7?6:margin>=6?4:margin>=5?2:margin>=4?1:0;
-                if (bonusPay > 0) {
-                    win += (currentBets.bonus||0) * (bonusPay + 1);
-                    notifications.push(`<span class="win-badge" style="background:#7b1fa2;">BONUS ${bonusPay}:1!</span>`);
-                }
-            }
-
-        } else {
-            stats.banker++;
-            const isB6 = bS === 6;
-            const isB6_2card = isB6 && b.length === 2;
-            const isB6_3card = isB6 && b.length === 3;
-
-            if (c.ezMode && drg) {
-                win += (currentBets.dragon||0) * 41;
-                beadClass='dragon-win'; beadLabel='D7'; outcomeType='banker';
-                flash('bet-dragon-box');
-                notifications.push(`<span class="win-badge" style="background:var(--dragon-orange);color:black;">DRAGON 7!</span>`);
-                specialMsg = '🐉 DRAGON 7!';
-            } else if (c.ezMode && bS===7 && b.length===3) {
-                win += (currentBets.banker||0);
-                beadClass='banker'; beadLabel='B'; outcomeType='banker';
-                notifications.push(`<span class="win-badge" style="background:#555;">DRAGON PUSH</span>`);
-            } else {
-                if (drg) {
-                    win += (currentBets.dragon||0) * 41 + (currentBets.banker||0);
-                    beadClass='dragon-win'; beadLabel='D7'; outcomeType='banker';
-                    flash('bet-dragon-box'); flash('bet-banker-box');
-                    notifications.push(`<span class="win-badge" style="background:var(--dragon-orange);color:black;border:1px solid black;">DRAGON 7 WIN!</span>`);
-                    specialMsg = '🐉 DRAGON 7!';
-                } else {
-                    win += (currentBets.banker||0) * (1 + c.bankerOdds);
-                    beadClass='banker'; beadLabel='B'; outcomeType='banker';
-                    flash('bet-banker-box');
-                }
-            }
-
-            if (currentBets.super6 > 0 && isB6) {
-                win += (currentBets.super6||0) * 13;
-                notifications.push(`<span class="win-badge" style="background:#388e3c;">SUPER 6! +12:1</span>`);
-            }
-            if (currentBets.lucky6 > 0 && isB6) {
-                const lucky6Pay = isB6_2card ? 13 : 21;
-                win += (currentBets.lucky6||0) * lucky6Pay;
-                notifications.push(`<span class="win-badge" style="background:#0d6b5e;">LUCKY 6! +${lucky6Pay-1}:1</span>`);
-            }
-            if (currentBets.tiger > 0 && isB6_2card) {
-                win += (currentBets.tiger||0) * 10;
-                notifications.push(`<span class="win-badge" style="background:#b84000;">TIGER! +9:1</span>`);
-            }
-            if (currentBets.bonus > 0) {
-                const margin = bS - pS;
-                const bonusPay = margin>=9?30:margin>=8?10:margin>=7?6:margin>=6?4:margin>=5?2:margin>=4?1:0;
-                if (bonusPay > 0) {
-                    win += (currentBets.bonus||0) * (bonusPay + 1);
-                    notifications.push(`<span class="win-badge" style="background:#7b1fa2;">BONUS ${bonusPay}:1!</span>`);
-                }
-            }
-            if (currentBets.natural > 0) {
-                const isNatural = b.length===2 && (bS===8||bS===9);
-                if (isNatural) {
-                    const naturalPay = bS===9 ? 8 : 6;
-                    win += (currentBets.natural||0) * (naturalPay + 1);
-                    notifications.push(`<span class="win-badge" style="background:var(--dragon-orange);">NATURAL ${bS} BANKER +${naturalPay}:1!</span>`);
-                }
-            }
-        }
-
-        bankroll += win;
-        for (let k in currentBets) lastBets[k] = currentBets[k];
-
-        if (totalWagered > 0) {
-            const netPL = win - totalWagered;
-            showResult(netPL, outcomeType, pS, bS, specialMsg);
-        }
-
-        if (notifications.length > 0) {
-            document.getElementById('special-notifications').innerHTML = notifications.join(' ');
-        }
-
-        addToRoads(outcomeType, beadClass, beadLabel);
-
-        for (let k in currentBets) {
-            currentBets[k] = 0;
-            const disp = document.getElementById(`disp-${k}`);
-            if (disp) disp.textContent = "$0";
-        }
-        updateUI();
-        updateAuxButtons();
-        document.getElementById('stat-b').textContent = stats.banker;
-        document.getElementById('stat-p').textContent = stats.player;
-        document.getElementById('stat-t').textContent = stats.tie;
-    }
-
-    function showResult(netPL, outcomeType, pS, bS, specialMsg) {
-        const overlay = document.getElementById('result-overlay');
-        const card = document.getElementById('result-card');
-        const titleEl = document.getElementById('result-title');
-        const amountEl = document.getElementById('result-amount');
-        const detailEl = document.getElementById('result-detail');
-        const isWin = netPL > 0, isPush = netPL === 0;
-        if (isPush) sfxTie();
-        else if (!isWin) sfxLose();
-        else if (specialMsg && (specialMsg.includes('DRAGON') || specialMsg.includes('PANDA'))) sfxJackpot();
-        else sfxWin();
-        const outcomeLabel = outcomeType==='tie'?'TIE':outcomeType==='player'?'PLAYER':'BANKER';
-        if (isPush) {
-            titleEl.textContent='PUSH'; card.style.background='linear-gradient(135deg,#333 0%,#555 100%)'; card.style.border='3px solid #aaa'; titleEl.style.color='#eee'; amountEl.style.color='#ccc';
-        } else if (isWin) {
-            titleEl.textContent=specialMsg||'WIN!'; card.style.background='linear-gradient(135deg,#0a4d2c 0%,#1a8c22 100%)'; card.style.border='3px solid var(--gold)'; titleEl.style.color='#ffd700'; amountEl.style.color='#7dff7d';
-        } else {
-            titleEl.textContent='LOSE'; card.style.background='linear-gradient(135deg,#3b0000 0%,#8b1e1e 100%)'; card.style.border='3px solid #ff4444'; titleEl.style.color='#ff8888'; amountEl.style.color='#ffaaaa';
-        }
-        const sign = netPL >= 0 ? '+' : '-';
-        amountEl.textContent = `${sign}$${Math.abs(netPL).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-        detailEl.textContent = `${outcomeLabel}  •  Player ${pS} – Banker ${bS}`;
-        overlay.style.display = 'flex';
-        clearTimeout(window._resultTimer);
-        window._resultTimer = setTimeout(dismissResult, 2500);
-    }
-
-    function dismissResult() {
-        clearTimeout(window._resultTimer);
-        document.getElementById('result-overlay').style.display = 'none';
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  ROADS
-    // ══════════════════════════════════════════════════════════
-    function addToRoads(outcomeType, beadClass, beadLabel) {
-        beadHistory.push({ cls: beadClass, label: beadLabel });
-        if (outcomeType === 'tie') {
-            if (bigRoadColumns.length > 0) {
-                const lastCol = bigRoadColumns[bigRoadColumns.length-1];
-                if (lastCol.length > 0) lastCol[lastCol.length-1].tieCount++;
-            }
-        } else {
-            const isNewType = bigRoadLastNonTie !== outcomeType;
-            if (bigRoadColumns.length === 0 || isNewType) {
-                // New streak: start a new column at row 0
-                bigRoadColumns.push([{ type: outcomeType, tieCount: 0, col: bigRoadColumns.length, row: 0 }]);
-            } else {
-                // Same streak: continue downward, or dragon-tail right if at row 6
-                const lastCol = bigRoadColumns[bigRoadColumns.length-1];
-                const lastEntry = lastCol[lastCol.length-1];
-                if (lastEntry.row < 5) {
-                    // Normal: go down in same column
-                    lastCol.push({ type: outcomeType, tieCount: 0, col: lastEntry.col, row: lastEntry.row + 1 });
-                } else {
-                    // Dragon tail: go right at row 5
-                    bigRoadColumns.push([{ type: outcomeType, tieCount: 0, col: lastEntry.col + 1, row: 5, dragonTail: true }]);
-                }
-            }
-            bigRoadLastNonTie = outcomeType;
-            computeDerivedRoads(outcomeType);
-        }
-        renderAllRoads();
-    }
-
-    // Build logical streak columns: each streak is one logical column
-    // bigRoadColumns array entries with dragonTail=true are continuations of the same streak
-    function getLogicalStreakCols() {
-        const streakCols = []; // each item = array of entries in that streak
-        bigRoadColumns.forEach(col => {
-            col.forEach(entry => {
-                if (entry.row === 0 && !entry.dragonTail) {
-                    streakCols.push([entry]);
-                } else {
-                    if (streakCols.length > 0) {
-                        streakCols[streakCols.length - 1].push(entry);
-                    }
-                }
-            });
-        });
-        return streakCols;
-    }
-
-    function computeDerivedRoads(outcomeType) {
-        const logicalCols = getLogicalStreakCols();
-        const colIdx = logicalCols.length - 1;
-        const rowIdx = logicalCols[colIdx].length - 1;
-        derivedEntry(logicalCols, colIdx, rowIdx, 1, bebEntries);
-        derivedEntry(logicalCols, colIdx, rowIdx, 2, smallEntries);
-        derivedEntry(logicalCols, colIdx, rowIdx, 3, cockEntries);
-    }
-
-    function derivedEntry(cols, colIdx, rowIdx, lookback, entries) {
-        const refColIdx = colIdx - lookback;
-        if (rowIdx === 0) {
-            if (refColIdx < 0) return;
-            const leftLen = (colIdx - 1 >= 0) ? cols[colIdx-1].length : 0;
-            const refLen  = (refColIdx >= 0)   ? cols[refColIdx].length : 0;
-            entries.push({ rep: leftLen === refLen });
-        } else {
-            if (refColIdx < 0) {
-                if (colIdx === 0 && rowIdx === lookback) entries.push({ rep: false });
-                return;
-            }
-            const refHasCell = refColIdx >= 0 && cols[refColIdx].length > (rowIdx - 1);
-            entries.push({ rep: refHasCell });
-        }
-    }
-
-    function renderAllRoads() {
-        renderBeadPlate();
-        renderBigRoad();
-        renderDerivedRoad('road-beb', bebEntries, 'circle');
-        renderDerivedRoad('road-small', smallEntries, 'hollow');
-        renderDerivedRoad('road-cock', cockEntries, 'slash');
-    }
-
-    function renderBeadPlate() {
-        const container = document.getElementById('road-bead');
-        container.innerHTML = '';
-        beadHistory.forEach(entry => {
-            const bead = document.createElement('div');
-            bead.className = `bead ${entry.cls}`;
-            bead.textContent = entry.label;
-            container.appendChild(bead);
-        });
-        container.scrollLeft = container.scrollWidth;
-    }
-
-    function renderBigRoad() {
-        const container = document.getElementById('road-big');
-        container.innerHTML = '';
-
-        // Build a 2D map of col -> row -> entry using the explicit col/row stored on each entry
-        // For dragon tail entries, they share the same row (5) but have incrementing col values
-        const ROWS = 6;
-        let maxCol = 0;
-
-        // Flatten all entries and find the rightmost column
-        const allEntries = [];
-        bigRoadColumns.forEach(col => {
-            col.forEach(entry => {
-                allEntries.push(entry);
-                if (entry.col > maxCol) maxCol = entry.col;
-            });
-        });
-
-        const totalCols = maxCol + 1;
-        // Create a sparse grid: grid[col][row] = entry
-        const grid = {};
-        allEntries.forEach(entry => {
-            if (!grid[entry.col]) grid[entry.col] = {};
-            grid[entry.col][entry.row] = entry;
-        });
-
-        // Render column by column
-        for (let c = 0; c < totalCols; c++) {
-            for (let r = 0; r < ROWS; r++) {
-                const cell = document.createElement('div');
-                cell.className = 'br-cell';
-                const entry = grid[c] && grid[c][r];
-                if (entry) {
-                    const circle = document.createElement('div');
-                    circle.className = `br-circle ${entry.type}`;
-                    circle.style.position = 'relative';
-                    if (entry.tieCount > 0) {
-                        circle.classList.add('has-tie');
-                        const tieLine = document.createElement('div');
-                        tieLine.style.cssText = 'position:absolute;width:2px;height:11px;background:#1a8c22;top:0;left:50%;transform:translateX(-50%);border-radius:1px;';
-                        circle.appendChild(tieLine);
-                    }
-                    cell.appendChild(circle);
-                }
-                container.appendChild(cell);
-            }
-        }
-        const wrap = container.parentElement;
-        if (wrap) wrap.scrollLeft = wrap.scrollWidth;
-    }
-
-    function renderDerivedRoad(containerId, entries, style) {
-        const container = document.getElementById(containerId);
-        container.innerHTML = '';
-        const ROWS = 4;
-        const colCount = Math.ceil(entries.length / ROWS) + 2;
-        const totalCells = colCount * ROWS;
-        const grid = new Array(totalCells).fill(null);
-        entries.forEach((entry, i) => {
-            const c = Math.floor(i / ROWS);
-            const r = i % ROWS;
-            grid[c * ROWS + r] = entry;
-        });
-        for (let i = 0; i < grid.length; i++) {
-            const cell = document.createElement('div');
-            cell.className = 'dr-cell';
-            const entry = grid[i];
-            if (entry !== null) {
-                let el;
-                if (style === 'circle') {
-                    el = document.createElement('div');
-                    el.className = `dr-circle ${entry.rep?'rep':'non'}`;
-                } else if (style === 'hollow') {
-                    el = document.createElement('div');
-                    el.className = `dr-circle-sm ${entry.rep?'rep':'non'}`;
-                } else {
-                    el = document.createElement('div');
-                    el.className = `dr-slash ${entry.rep?'rep':'non'}`;
-                }
-                cell.appendChild(el);
-            }
-            container.appendChild(cell);
-        }
-        const wrap = container.parentElement;
-        if (wrap) wrap.scrollLeft = wrap.scrollWidth;
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  SHOE INSPECTOR
-    // ══════════════════════════════════════════════════════════
-    function toggleShoeVisibility() {
-        shoeVisible = !shoeVisible;
-        const el = document.getElementById('shoe-preview-el');
-        const ph = document.getElementById('inspector-placeholder');
-        el.style.display = shoeVisible ? 'flex' : 'none';
-        if (ph) ph.style.display = shoeVisible ? 'none' : 'block';
-        renderShoePreview();
-    }
-
-    function renderShoePreview() {
-        if (!shoeVisible) return;
-        const fm={1:'A',11:'J',12:'Q',13:'K'};
-        document.getElementById('shoe-preview-el').innerHTML = [...shoe].reverse().map((c,i)=>`<span class="preview-card ${i===0?'next-card':''}">${fm[c]||c}</span>`).join('');
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  UI UPDATE
-    // ══════════════════════════════════════════════════════════
-    function updateUI() {
-        const fmt=`$${bankroll.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2})}`;
-        const pl=bankroll-initialBankroll;
-        const fmtPL=(pl>=0?'+$':'-$')+Math.abs(pl).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
-        const plColor=pl>=0?'#4caf50':'#f44336';
-        const rawCount=shoeSize===0?"∞":shoe.length;
-        document.querySelectorAll('.balance-label').forEach(el=>el.textContent=fmt);
-        document.querySelectorAll('.session-pl-label').forEach(el=>{el.textContent=fmtPL;el.style.color=plColor;});
-        document.querySelectorAll('.shoe-count-label').forEach(el=>el.textContent=rawCount);
-        renderShoePreview();
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  SCOREBOARD ZOOM ENGINE
-    //  Supports: pinch-to-zoom, double-tap to zoom in/out, pan when zoomed
-    // ══════════════════════════════════════════════════════════
-    function initRoadZoom(containerId) {
-        const container = document.getElementById(containerId);
-        if (!container) return;
-        const inner = container.querySelector('.road-zoom-inner');
-
-        let scale = 1, minScale = 1, maxScale = 4;
-        let originX = 0, originY = 0;
-        let isPinching = false, lastDist = 0;
-        let isPanning = false, panStartX = 0, panStartY = 0, panOriginX = 0, panOriginY = 0;
-        let lastTap = 0;
-
-        function clampOrigin(ox, oy, s) {
-            const cw = container.clientWidth, ch = container.clientHeight;
-            const iw = inner.scrollWidth * s, ih = inner.scrollHeight * s;
-            const maxOx = 0, minOx = Math.min(0, cw - iw);
-            const maxOy = 0, minOy = Math.min(0, ch - ih);
-            return [
-                Math.max(minOx, Math.min(maxOx, ox)),
-                Math.max(minOy, Math.min(maxOy, oy))
-            ];
-        }
-
-        function applyTransform(s, ox, oy) {
-            [ox, oy] = clampOrigin(ox, oy, s);
-            originX = ox; originY = oy; scale = s;
-            inner.style.transform = `translate(${ox}px, ${oy}px) scale(${s})`;
-            container.classList.toggle('zoomed', s > 1);
-        }
-
-        function getTouchDist(t) {
-            const dx = t[0].clientX - t[1].clientX;
-            const dy = t[0].clientY - t[1].clientY;
-            return Math.sqrt(dx*dx + dy*dy);
-        }
-        function getTouchMid(t, rect) {
-            return {
-                x: ((t[0].clientX + t[1].clientX) / 2) - rect.left,
-                y: ((t[0].clientY + t[1].clientY) / 2) - rect.top
-            };
-        }
-
-        container.addEventListener('touchstart', e => {
-            if (e.touches.length === 2) {
-                e.preventDefault();
-                isPinching = true; isPanning = false;
-                lastDist = getTouchDist(e.touches);
-            } else if (e.touches.length === 1) {
-                if (scale > 1) {
-                    isPanning = true;
-                    panStartX = e.touches[0].clientX;
-                    panStartY = e.touches[0].clientY;
-                    panOriginX = originX;
-                    panOriginY = originY;
-                }
-                // Double-tap detection
-                const now = Date.now();
-                if (now - lastTap < 300) {
-                    e.preventDefault();
-                    if (scale > 1) {
-                        applyTransform(1, 0, 0);
-                    } else {
-                        const rect = container.getBoundingClientRect();
-                        const tx = e.touches[0].clientX - rect.left;
-                        const ty = e.touches[0].clientY - rect.top;
-                        const newScale = 2.5;
-                        const newOx = -(tx * (newScale - 1));
-                        const newOy = -(ty * (newScale - 1));
-                        applyTransform(newScale, newOx, newOy);
-                    }
-                }
-                lastTap = now;
-            }
-        }, { passive: false });
-
-        container.addEventListener('touchmove', e => {
-            if (isPinching && e.touches.length === 2) {
-                e.preventDefault();
-                const dist = getTouchDist(e.touches);
-                const rect = container.getBoundingClientRect();
-                const mid = getTouchMid(e.touches, rect);
-                const ratio = dist / lastDist;
-                const newScale = Math.max(minScale, Math.min(maxScale, scale * ratio));
-                // Zoom toward pinch midpoint
-                const newOx = mid.x - (mid.x - originX) * (newScale / scale);
-                const newOy = mid.y - (mid.y - originY) * (newScale / scale);
-                applyTransform(newScale, newOx, newOy);
-                lastDist = dist;
-            } else if (isPanning && e.touches.length === 1 && scale > 1) {
-                e.preventDefault();
-                const dx = e.touches[0].clientX - panStartX;
-                const dy = e.touches[0].clientY - panStartY;
-                applyTransform(scale, panOriginX + dx, panOriginY + dy);
-            }
-        }, { passive: false });
-
-        container.addEventListener('touchend', e => {
-            if (e.touches.length < 2) isPinching = false;
-            if (e.touches.length === 0) isPanning = false;
-        });
-
-        // Mouse wheel zoom for desktop
-        container.addEventListener('wheel', e => {
-            e.preventDefault();
-            const rect = container.getBoundingClientRect();
-            const mx = e.clientX - rect.left;
-            const my = e.clientY - rect.top;
-            const delta = e.deltaY > 0 ? 0.85 : 1.18;
-            const newScale = Math.max(minScale, Math.min(maxScale, scale * delta));
-            const newOx = mx - (mx - originX) * (newScale / scale);
-            const newOy = my - (my - originY) * (newScale / scale);
-            applyTransform(newScale, newOx, newOy);
-        }, { passive: false });
-    }
-
-    // Init zoom on all roads after game starts
-    function initAllZoom() {
-        ['zoom-bead','zoom-big','zoom-beb','zoom-small','zoom-cock'].forEach(initRoadZoom);
-    }
-
-    // ══════════════════════════════════════════════════════════
-    //  INIT — check session on load
-    // ══════════════════════════════════════════════════════════
-    window.addEventListener('DOMContentLoaded', () => {
-        checkExistingSession();
-    });
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 3000); // Change image every 3 seconds
+}
 </script>
-</body>
-</html>
+
+              
+
+</div>
+<!--END OF IMG SLIDE SHOW AT THE TOP (LMH,CF) -->
+
+  
+<p></p>
+  
+  
+<div class="backgroundPurple"><p></p><h2><a name="videos">VIDEO</a></h2><p></p><a name="videos">
+
+<div style="text-align: center; color: yellow;">~VIDEOS FILLMED AT STAGES~
+</div>
+
+  
+  <!--Youtube Video Reel-->
+  
+<div style="text-align: center;">
+    <iframe width="560" height="315" src="https://web.archive.org/web/20250225124521if_/https://www.youtube.com/embed/9PxT79ajvcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-ruffle-polyfilled=""></iframe>
+  
+    
+    
+    <iframe width="560" height="315" src="https://web.archive.org/web/20250225124521if_/https://www.youtube.com/embed/hj38V_JO2yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" data-ruffle-polyfilled=""></iframe>
+
+
+<br><br><br><br>
+</div>
+  </a></div><a name="videos">
+
+  <p></p>
+    
+  
+  
+</a><div class="backgroundPurple"><a name="videos"></a><h2><a name="videos"></a><a name="rec">RECORDING</a></h2><a name="rec">
+  <div style="text-align: center; color: yellow;">~WE DO STUDIO RECORDING SESSIONS~
+</div>
+
+
+
+
+  
+    
+  <!-- bandcamp-->
+
+
+  <div class="center">
+  <iframe style="border: 0; width: 350px; height: 120px;" src="https://web.archive.org/web/20250225124521if_/https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless="" data-ruffle-polyfilled=""><a href="https://web.archive.org/web/20250225124521/http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+  </div>
+
+  <p></p>
+  
+  
+
+
+
+<div class="center">
+
+  <iframe style="border: 0; width: 350px; height: 120px;" src="https://web.archive.org/web/20250225124521if_/https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless="" data-ruffle-polyfilled=""><a href="https://web.archive.org/web/20250225124521/http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+  </div>
+  <p></p>
+
+
+  
+      <!-- reverbnation-->
+    <div class="center">
+    <iframe width="600px" height="350px" scrolling="no" frameborder="no" src="https://web.archive.org/web/20250225124521if_/https://www.reverbnation.com/widget_code/html_widget/artist_3154108?widget_id=55&amp;pwc[included_songs]=1&amp;context_type=page_object&amp;spoid=artist_3154108&amp;pwc[size]=small" data-ruffle-polyfilled=""></iframe>
+    </div>
+  
+    <p></p>
+  
+</a></div><a name="rec">
+  <p></p>
+
+    
+  
+  
+
+  
+        <!--===============Start of "ART SECTION" HTML===============-->
+  <!--===============Start of "ART SECTION" HTML===============-->  
+
+
+
+</a><div class="backgroundPurple"><a name="rec"></a><h2><a name="rec"></a><a name="merch">MERCH</a></h2><a name="merch">
+  </a><div class="center"><a name="merch">
+  
+ <!-- =MERCH LINKS= -->
+
+    <!-- Rarible -->
+    
+<div>
+    COMING SOON!!
+</div>
+
+<br><br>
+  
+<p></p><p>
+
+<!--============================Start of Art Slide HTML=================================-->
+
+
+</p></a><div class="slideshow-container"><a name="merch">
+
+</a><a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+
+<div class="mySlides fade" style="display: block;">
+  <div class="numbertext">1 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/merch/ritual.png" style="width:100%">
+  <div class="text">Glitch</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">2 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/merch/ritual.png" style="width:100%">
+  <div class="text">Ritual</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">3 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/cap.png" style="width:100%">
+  <div class="text">Captive</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">4 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/kneel before zod cy BLACK glass GLASS TUBE.png" style="width:100%">
+  <div class="text">Arrival </div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">5 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/3.png" style="width:100%">
+  <div class="text">Alone Togheter</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">6 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/kneel before zod cy glass.png" style="width:100%">
+  <div class="text">Signals</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">7 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/untitled2.png" style="width:100%">
+  <div class="text">Sorted</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">8 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/Wide angle gun show wild3.jpg" style="width:100%">
+  <div class="text">Hand it Over</div>
+</div>
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">9 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/rabit.jpg" style="width:100%">
+  <div class="text">Jillalope</div>
+</div>
+
+<div class="mySlides fade" style="display: none;">
+  <div class="numbertext">10 / 10</div>
+  <img class="fit" src="/web/20250225124521im_/http://stageslompoc.com/imagesS/oh dear.jpg" style="width:100%">
+  <div class="text">Oh Dear!</div>
+</div>
+
+
+
+
+
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot active" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+  <span class="dot" onclick="currentSlide(5)"></span> 
+  <span class="dot" onclick="currentSlide(6)"></span> 
+  <span class="dot" onclick="currentSlide(7)"></span> 
+  <span class="dot" onclick="currentSlide(8)"></span> 
+  <span class="dot" onclick="currentSlide(9)"></span> 
+  <span class="dot" onclick="currentSlide(10)"></span> 
+
+</div>
+
+<!--End of ART Slide  html-->
+
+<!--Start of ART Slide  Java -->
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+
+
+<!--=========================End  of ART slide  HTML and Java ======================================================-->
+
+
+  </div>
+  </div>
+  
+  
+  <p></p>
+  
+  
+  
+  
+<div class="backgroundPurple"><h2><a name="comedy">COMEDY</a></h2><a name="comedy">
+
+  
+<div class="center">
+
+
+     <iframe src="https://web.archive.org/web/20250225124521if_/https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcasey.fera%2Fposts%2Fpfbid02Yk5BYoj7s2hxDd7CwLKNg9WECrJxik2zkV6ihz7wmGeASqVLBaSGTYkuByfh3PpJl&amp;show_text=true&amp;width=500" width="500" height="653" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" data-ruffle-polyfilled=""></iframe>
+
+     <div class="center">
+    
+<iframe src="https://web.archive.org/web/20250225124521if_/https://www.eventbrite.com/e/first-friday-funnies-tickets-510154645277" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-ruffle-polyfilled=""></iframe>
+
+    
+<p></p>
+    
+    CALL FOR BOOKINGS
+    </div>
+
+  </div>
+
+  </a></div><a name="comedy">
+  
+
+
+
+<p></p>
+  
+</a><div class="backgroundPurple"><a name="comedy"></a><h2><a name="comedy"></a><a name="booking">BOOKING</a></h2><a name="booking">
+  
+  <div class="center">
+    
+  <div class="INFO">  
+    <h2>
+
+
+      STAGES
+REHEARSAL PRICING
+<p></p>
+Minimum of 60$ just to open the door. You can stay up to 4 hours at that rate. <p></p>
+Anything after that is $10 an hour extra. <p></p>
+
+If you want to do 1 day a week and pay in advance for the month, it will be $200, which works out to be $50 per session (4 4 hour sessions per month). <p></p>
+
+If you have drum or bass we can do weekends anytime, but weekdays only after 3pm for noise ordinance. Quieter acoustic practice/shows are fine anytime. 
+
+
+
+
+    </h2>
+  </div>
+    
+    <div class="areweokay">
+      
+  
+    <div class="PDS">
+    <br>
+     <br>
+     </div>
+    </div>
+  </div>
+<p></p>
+<div class="center"><h3>
+contact:</h3><h2>
+
+<div>
+ <center>
+<td< td="">
+
+  </td<><table style="border: 1px solid black;">
+  <tbody><tr>
+    <th><img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/caseyfera.webp" alt="Casey Image" width="80"></th>
+        <th valign="TOP" style="text-align: left; border: 10px solid #ce7f87;">CASEY<br>(805)591-4839<br>casey@stageslompoc.com</th>
+    <th>          </th>
+</tr><tr>
+    <td></td>
+    <td></td>
+  </tr>
+</tbody></table>
+</center>
+</div>
+
+
+
+
+
+  
+
+
+</h2></div>
+<p></p>
+  <div class="center">
+<iframe src="https://web.archive.org/web/20250225124521if_/https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6565.132011176665!2d-120.46957322738828!3d34.64040611539924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec1fb523d09f7b%3A0x581022fc19e994a!2sStages%20Rehearsal%20Studios!5e0!3m2!1sen!2sus!4v1648371435570!5m2!1sen!2sus" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-ruffle-polyfilled=""></iframe>
+</div>
+
+<p></p>
+
+<div class="center">
+<img src="/web/20250225124521im_/http://stageslompoc.com/imagesS/bluedoor.png" width="450">
+</div>
+
+
+
+  
+
+<script>    
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+</script>
+
+
+
+
+  
+  
+  
+  
+<!--
+     FILE ARCHIVED ON 12:45:21 Feb 25, 2025 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:48:04 May 24, 2026.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  captures_list: 0.836
+  exclusion.robots: 0.069
+  exclusion.robots.policy: 0.05
+  esindex: 0.017
+  cdx.remote: 5.967
+  LoadShardBlock: 122.937 (3)
+  PetaboxLoader3.datanode: 194.792 (5)
+  load_resource: 297.487 (2)
+  PetaboxLoader3.resolve: 84.635
+  nav: 0.128 (6)
+--></a></div><div id="readvoxWrapper" style="height: 0px; width: 0px; z-index: 99999;"></div></body></html>
