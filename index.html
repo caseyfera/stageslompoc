@@ -1,925 +1,604 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  
-<meta charset="utf-8">
-  <meta name="viewport">
-<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
-
-<title>Stages Lompoc</title>
-
-
-<style>
-
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
-
-/* elfsight fix*/
-.global-styles,
-.mediumScreenDisabled:has(.elfsight-app-930021d6-499c-4322-9ac1-8c71c4a3f2f5) {
-	display: block !important;
-}
-
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-
-body {background-color: #1d84d5}
-
-html {font-size: 62.5%;font-family: 'Roboto', sans-serif;}
-
-li {list-style: none;}
-
-a {text-decoration: none;}
-
-.header{border-bottom: 1px solid #E2E8F0;}
-
-.navbar {background: white; z-index: 5; width: 100%; position: fixed; display: flex;justify-content: space-between;align-items: center; padding: 1rem 1.5rem;}
-
-
-.hamburger {display: none;}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: #101010;
-}
-
-
-.nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-item {
-    margin-left: 5rem;
-}
-
-.nav-link{
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: #475569;
-}
-
-.nav-link:hover{
-    color: #482ff7;
-}
-
-.nav-logo {
-    font-size: 2.1rem;
-    font-weight: 500;
-    color: #1d84d5;
-}
-
-@media only screen and (max-width: 870px) {
-    .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 5rem;
-        flex-direction: column;
-        background-color: #fff;
-        width: 100%;
-        border-radius: 10px;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
-    }
-
-
-
-// Inside the Media Query.
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-item {
-        margin: 2.5rem 0;
-    }
-
-    .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-
-}
-
-table { border: 0px solid c}  
-  table tr {}
-  table tr th {border: 0px solid #AA2B2D}
-
-
-
-/* end of nav style */
-
-
-/*stages Logo*/
-  .logo {z-index: 0; text-align: center;
-text-shadow: 12px; position: relative; top: 0px; filter: drop-shadow(0 0 10px);}
-
-  html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
-
-
-
-body {margin:0; padding:0;}
-
-
-  .shadow {position: relative; left: 0px; top: -0px; }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  body {background-color: #1d84d5}
-
-  
-  
-  #myBtn {  
-  
- 
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  
- 
-
-  }
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stages Lompoc</title>
     
-  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 
+    <style>
+        /* Modern Reset & CSS Variables */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        :root {
+            --bg-dark: #121212;
+            --card-purple: #1e1b26;
+            --accent-yellow: #EFDA03;
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+            --nav-bg: #1a1a1a;
+            --link-blue: #1d84d5;
+        }
 
-  /*stages Logo*/
-  .logo {z-index: -30; text-align: center;text-shadow: 12px; position: relative; top: 10px; filter: drop-shadow(0 0 10px);}
-  .shadow {position: relative; left: 0px; top: -90px; }
-  
-  
-    html { box-sizing: border-box; position: relative; top: 0px} *, *:before, *:after { box-sizing: inherit; z-index: 0; border: 0px solid black;  padding: 0px; }
-  
-  
-  /*LMH PODCAST LINKS*/
-      .pod ul li {text-align: center; position: relative; top: 0px; display: inline-block; }
-      .pod ul li a {text-align: center; font-family: volt; text-decoration: none; color: #999999; margin: 1px; padding-left: 25px; padding-top: 0px; padding-right: 25px; }
-      .pod ul li a:after {content: ""; display: inline-block; position: absolute; left: 0px; bottom: 0px; background-color: #2D576E; width: 0px; height: 3px; transition: all 0.4s; }
-      .pod ul li a:hover {color: black; }
-      .pod ul li a:hover:after { width: 100%; }
-      body {margin:0; padding:0;}
+        html {
+            font-size: 62.5%; /* 1rem = 10px */
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-  
-  /*FONTS*/
-  div.backgroundPurple {font-family: volt; background-color: #ce7f87; border: 5px solid #black; height: auto; position: relative; top: -125px}
-  h1 {color: black; }
-  
-  /*Booking INFO ON NEAR THE FOOTER*/
-  .INFO h2 {margin:25px; padding: 25px; color: #EFDA03;}
-  .INFO h3 a {color: white; text-decoration: none}
-  h2 {z-index: 1; color: #EFDA03; width 200px; text-align: center; font-size: 30px}
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
 
-  
-  
-  
-  .center {text-align: center;}
-  
-/*=========================start of topslide css======================================================*/
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-  .topSlides {display:none;}
+        li {
+            list-style: none;
+        }
 
-  /*IMG SLIDE SHOW AT THE TOP (LMH,CF)*/
-  .w3-content{margin: auto; width: 300px; height: 220px; background-color: black;}
-  .topSlides{width: 250px;  }
-  
-/*=========================end of top slide css======================================================*/
-  
-  .areweokay {border: 0px solid #CD2C2E; }
-  .areweokay i{font-family:volt; color: black; font-size: 25px;  }
-  .areweokay a{border: 1px #ADADAD}
-  
-  .INFO i {color: white; text-decoration: none}
-  .INFO a {text-decoration: none}
-  
-  h3 {font-size: 35px; color: white}
+        /* Fixes for External Widget Overrides */
+        .global-styles,
+        .mediumScreenDisabled:has(.elfsight-app-930021d6-499c-4322-9ac1-8c71c4a3f2f5) {
+            display: block !important;
+        }
 
-/*MAKE ALL IFRAMES (VIDEOS BIGER ON SMALL SCREENS*/
-  
-@media only screen and (max-width: 600px) {
-  iframe {
-    width: 100%; 
-  }
-}
+        /* Navigation Bar */
+        .header {
+            background-color: var(--nav-bg);
+            border-bottom: 2px solid #2a2a2a;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-/*=========================start of ART slide css======================================================*/ 
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+        }
 
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
+        .nav-logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--link-blue);
+            letter-spacing: 1px;
+        }
 
-/* Slideshow container */
-.slideshow-container 
-{display: block;
-  margin-left: auto;
-  margin-right: auto;
-  
- max-width: 500px;
- height: 300px;
-position: relative;
-  margin: auto;
-}
+        .nav-socials table {
+            border-collapse: collapse;
+        }
 
-.fit
-{
- 
- display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
- max-width: 500px;
- height: 300px;
- object-fit: contain;
-filter: blur (50px);
-}
+        .nav-socials img {
+            width: 32px;
+            height: 32px;
+            margin: 0 0.5rem;
+            transition: transform 0.2s;
+        }
 
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-z-index: 101;
-}
+        .nav-socials img:hover {
+            transform: scale(1.1);
+        }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+        .nav-item {
+            margin-left: 3rem;
+        }
 
-}
+        .nav-link {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            transition: color 0.2s;
+        }
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
+        .nav-link:hover {
+            color: var(--accent-yellow);
+        }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #008080;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
- right: 200px;
-top: 10px;
-  width: 100%;
-  text-align: center;
-offset-position: 25% 75%;
-z-index: 100;
-}
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
 
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--text-white);
+        }
 
-.active, .dot:hover {
-  background-color: #white;
-}
+        /* Main Content Layout Adjustments (Replaces all those brutal <br> tags) */
+        main {
+            max-width: 1000px;
+            margin: 100px auto 40px auto; /* 100px top margin keeps header from blocking content */
+            padding: 0 2rem;
+        }
 
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+        /* Hero / Branding Area */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-@-webkit-keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+        .logo-container img {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(29, 132, 213, 0.4));
+        }
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+        /* Sections Styling */
+        section {
+            background-color: var(--card-purple);
+            border-radius: 8px;
+            padding: 4rem 2rem;
+            margin-bottom: 4rem;
+            border: 1px solid #2d2638;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-align: center;
+        }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
+        section h2 {
+            font-size: 3.5rem;
+            color: var(--accent-yellow);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Responsive Media Containers */
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        iframe {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        /* Main Top Carousel Settings */
+        .carousel-container {
+            max-width: 500px;
+            margin: 0 auto 3rem auto;
+            background: #000;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .topSlides {
+            display: none;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Merch Slideshow Settings */
+        .slideshow-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            background: #111;
+            border-radius: 6px;
+            padding: 2rem 0;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .fit {
+            width: 80%;
+            max-height: 250px;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.3s;
+            user-select: none;
+            background: rgba(0,0,0,0.5);
+            border-radius: 3px;
+        }
+
+        .next { right: 0; }
+        .prev { left: 0; }
+        .prev:hover, .next:hover { background-color: rgba(0,0,0,0.9); }
+
+        .text {
+            font-size: 1.4rem;
+            padding: 1rem 0;
+            color: var(--text-white);
+        }
+
+        .numbertext {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+
+        .dot-container {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #555;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: var(--accent-yellow);
+        }
+
+        /* Pricing Area Details */
+        .pricing-text {
+            font-size: 1.8rem;
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .pricing-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Cards Table cleanup */
+        .contact-box {
+            display: inline-block;
+            margin: 2rem auto;
+            background: rgba(250,250,250,0.05);
+            padding: 2rem;
+            border-radius: 6px;
+            border: 1px solid #333;
+        }
+
+        .contact-table th {
+            font-size: 1.6rem;
+            padding: 1rem;
+            font-weight: normal;
+        }
+
+        .contact-table img {
+            border-radius: 50%;
+            border: 2px solid var(--link-blue);
+        }
+
+        /* Responsive Breakpoints */
+        @media only screen and (max-width: 870px) {
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 6.5rem;
+                flex-direction: column;
+                background-color: var(--nav-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+                border-bottom: 2px solid #2a2a2a;
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active { left: 0; }
+            .nav-item { margin: 1.5rem 0; }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .pricing-text { text-align: center; font-size: 1.6rem; }
+            section h2 { font-size: 2.8rem; }
+        }
+    </style>
 </head>
-  </style>
-
-
-<!-- START OF HTML -->
+<body>
 
 <header class="header">
-        <nav class="navbar">
+    <nav class="navbar">
+        <a href="#" class="nav-logo">STAGES LOMPOC</a>
 
-            <a href="#" class="nav-logo">HOME</a>
+        <div class="nav-socials">
+            <table>
+                <tr>
+                    <td><a href="https://m.facebook.com/StagesRehearsalStudio" target="_blank"><img src="imagesS/facebook.svg" alt="Facebook"/></a></td>
+                    <td><a href="https://www.instagram.com/caseyfera/" target="_blank"><img src="imagesS/instagram-round.svg" alt="Instagram"/></a></td>
+                    <td><a href="https://www.youtube.com/watch?v=hj38V_JO2yY" target="_blank"><img src="imagesS/youtube.svg" alt="YouTube"/></a></td>
+                </tr>
+            </table>
+        </div>
 
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="#videos" class="nav-link">VIDEOS</a></li>
+            <li class="nav-item"><a href="#rec" class="nav-link">RECORDINGS</a></li>
+            <li class="nav-item"><a href="#merch" class="nav-link">MERCH</a></li>
+            <li class="nav-item"><a href="#comedy" class="nav-link">COMEDY</a></li>
+            <li class="nav-item"><a href="#booking" class="nav-link">BOOKING</a></li>
+        </ul>
 
-<div id="TableSocial">
-  <div class="tableright">
-    <table>
-      <tr>
-        <th>
-                </th>
-        <th>
-          <a href="https://m.facebook.com/StagesRehearsalStudio" target="_blank"><img src="imagesS/facebook.svg" alt="facebook" width="50" height="50"/></a>
-        </th>
-
-          <th>
-          <a href="https://www.instagram.com/caseyfera/"target="_blank"><img src="imagesS/instagram-round.svg" alt="instagram" width="50" height="50"/></a>
-        </th>
-<th>
-          <a href="https://www.youtube.com/watch?v=hj38V_JO2yY" target="_blank"><img src="imagesS/youtube.svg" alt="instagram" width="50" height="50"/></a>
-        </th>
-
-  </table>
-  </div>
-  </div>
-
-
-
-
-            <ul class="nav-menu">
-
-
-
-
-
-
-
-
-
-                <li class="nav-item">
-                    <a href="#videos" class="nav-link">VIDEOS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#rec" class="nav-link">RECORDINGS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#merch" class="nav-link">MERCH</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#comedy" class="nav-link">COMEDY</a>
-                </li>
-  <li class="nav-item">
-                    <a href="#booking" class="nav-link">BOOKING</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
 </header>
 
-
-
-
-<!-- old  html STAGES++++++++++++++++++++++++++++++++++++++=-->
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-  
-    
-
-<nav>
-  <div class="logo">
-    <div class="shadow"><img src="imagesS/logo.png" width="300" alt="stages"/>
+<main>
+    <div class="logo-container">
+        <img src="imagesS/logo.png" alt="Stages Rehearsal Studio Logo"/>
     </div>
 
-   
+    <div style="margin-bottom: 4rem;">
+        <div class="gfm-embed" data-url="https://www.gofundme.com/f/keep-the-music-alive-at-stages-rehearsal-studios/widget/large?sharesheet=undefined&attribution_id=sl:03a80993-f799-42e4-a0d2-f5e718a06073"></div>
+        <script defer src="https://www.gofundme.com/static/js/embed.js"></script>
     </div>
-   </div>
-    
-    
-</nav>    
 
+    <div class="carousel-container">
+        <script src="https://static.elfsight.com/platform/platform.js" async></script>
+        <div class="elfsight-app-9d13cf6c-41d5-4dfa-8820-d74f17d63aa2" data-elfsight-app-lazy></div>
 
+        <img class="topSlides" src="imagesS/girl.webp" alt="Live Event Image 1">
+        <img class="topSlides" src="imagesS/band3.webp" alt="Live Event Image 2">
+        <img class="topSlides" src="imagesS/band2.webp" alt="Live Event Image 3">
+        <img class="topSlides" src="imagesS/band.webp" alt="Live Event Image 4">
+        <img class="topSlides" src="imagesS/blueroom.webp" alt="Live Event Image 5">
+        <img class="topSlides" src="imagesS/jacobcole.webp" alt="Live Event Image 6">
+    </div>
 
-<!-- go fund me 
-STAGES
-rehearsal space and events venue
-(since 2010) 
-go fund me -->
-  
-<br>
-<br>
-<br>
+    <section id="videos">
+        <h2>Videos</h2>
+        <div class="section-subtitle">~ VIDEOS FILMED AT STAGES ~</div>
+        <div class="media-grid">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/9PxT79ajvcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hj38V_JO2yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
 
-<!-- go fund me -->
-<div class="gfm-embed" data-url="https://www.gofundme.com/f/keep-the-music-alive-at-stages-rehearsal-studios/widget/large?sharesheet=undefined&attribution_id=sl:03a80993-f799-42e4-a0d2-f5e718a06073"></div><script defer src="https://www.gofundme.com/static/js/embed.js"></script>
+    <section id="rec">
+        <h2>Recording</h2>
+        <div class="section-subtitle">~ WE DO STUDIO RECORDING SESSIONS ~</div>
+        <div class="media-grid" style="flex-direction: column; align-items: center;">
+            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+            <iframe width="100%" style="max-width: 600px;" height="350px" scrolling="no" frameborder="no" src="https://www.reverbnation.com/widget_code/html_widget/artist_3154108?widget_id=55&pwc[included_songs]=1&context_type=page_object&spoid=artist_3154108&pwc[size]=small"></iframe>
+        </div>
+    </section>
 
-	<p></p>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-	<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <section id="merch">
+        <h2>Merch</h2>
+        <div class="section-subtitle" style="color: var(--text-gray);">COMING SOON!!</div>
+        
+        <div class="slideshow-container">
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
 
-	
-  
+            <div class="mySlides">
+                <div class="numbertext">1 / 10</div>
+                <img class="fit" src="imagesS/merch/ritual.png" alt="Glitch">
+                <div class="text">Glitch</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">2 / 10</div>
+                <img class="fit" src="imagesS/merch/ritual.png" alt="Ritual">
+                <div class="text">Ritual</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">3 / 10</div>
+                <img class="fit" src="imagesS/cap.png" alt="Captive">
+                <div class="text">Captive</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">4 / 10</div>
+                <img class="fit" src="imagesS/kneel before zod cy BLACK glass GLASS TUBE.png" alt="Arrival">
+                <div class="text">Arrival</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">5 / 10</div>
+                <img class="fit" src="imagesS/3.png" alt="Alone Together">
+                <div class="text">Alone Together</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">6 / 10</div>
+                <img class="fit" src="imagesS/kneel before zod cy glass.png" alt="Signals">
+                <div class="text">Signals</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">7 / 10</div>
+                <img class="fit" src="imagesS/untitled2.png" alt="Sorted">
+                <div class="text">Sorted</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">8 / 10</div>
+                <img class="fit" src="imagesS/Wide angle gun show wild3.jpg" alt="Hand it Over">
+                <div class="text">Hand it Over</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">9 / 10</div>
+                <img class="fit" src="imagesS/rabit.jpg" alt="Jillalope">
+                <div class="text">Jillalope</div>
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">10 / 10</div>
+                <img class="fit" src="imagesS/oh dear.jpg" alt="Oh Dear!">
+                <div class="text">Oh Dear!</div>
+            </div>
+        </div>
 
-  <div class="backgroundPurple">
-    
-    <!--START OF IMG SLIDE SHOW AT THE TOP HTLM(LMH,CF) -->
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+            <span class="dot" onclick="currentSlide(4)"></span> 
+            <span class="dot" onclick="currentSlide(5)"></span> 
+            <span class="dot" onclick="currentSlide(6)"></span> 
+            <span class="dot" onclick="currentSlide(7)"></span> 
+            <span class="dot" onclick="currentSlide(8)"></span> 
+            <span class="dot" onclick="currentSlide(9)"></span> 
+            <span class="dot" onclick="currentSlide(10)"></span> 
+        </div>
+    </section>
 
-  <!-- Elfsight Instagram Feed | STAGES LOMPOC Instagram Feed -->
-<script src="https://static.elfsight.com/platform/platform.js" async></script>
-    <div class="elfsight-app-9d13cf6c-41d5-4dfa-8820-d74f17d63aa2" data-elfsight-app-lazy></div>
+    <section id="comedy">
+        <h2>Comedy</h2>
+        <div class="media-grid" style="flex-direction: column; align-items: center;">
+            <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcasey.fera%2Fposts%2Fpfbid02Yk5BYoj7s2hxDd7CwLKNg9WECrJxik2zkV6ihz7wmGeASqVLBaSGTYkuByfh3PpJl&show_text=true&width=500" width="500" height="653" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <iframe src="https://www.eventbrite.com/e/first-friday-funnies-tickets-510154645277" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div style="font-size: 2rem; margin-top: 2rem; font-weight: bold; color: var(--accent-yellow);">CALL FOR BOOKINGS</div>
+        </div>
+    </section>
 
+    <section id="booking">
+        <h2>Booking & Rehearsal Pricing</h2>
+        
+        <div class="pricing-text">
+            <p><strong>Minimum of $60 just to open the door.</strong> You can stay up to 4 hours at that base rate.</p>
+            <p>Anything past the initial 4 hours is an additional <strong>$10 per hour</strong>.</p>
+            <p><strong>Monthly Advance Discount:</strong> If you practice 1 day a week and pay in advance for the month, it is <strong>$200 total</strong> (which reduces it down to $50 per 4-hour session across 4 sessions).</p>
+            <p style="color: var(--accent-yellow); border-left: 3px solid var(--accent-yellow); padding-left: 15px;">
+                <em>Noise Ordinance Note:</em> Full band setups with live acoustic drums or bass can book anytime on weekends, but are limited to after 3:00 PM on weekdays. Lower-volume acoustic sets or practice are fine anytime!
+            </p>
+        </div>
 
-    
+        <div class="contact-box">
+            <h3 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--accent-yellow);">CONTACT INFO</h3>
+            <table class="contact-table">
+                <tr>
+                    <th><img src="imagesS/caseyfera.webp" alt="Casey Fera" width="80"></th>
+                    <th style="text-align: left; padding-left: 2rem; line-height: 1.5;">
+                        <strong>CASEY FERA</strong><br>
+                        (805) 591-4839<br>
+                        casey@stageslompoc.com
+                    </th>
+                </tr>
+            </table>
+        </div>
 
-<div class="w3-content w3-section" style="max-width:500px">
-    
-<img class="topSlides" src="imagesS/girl.webp" style="width:49%;  display: block;
-  margin-left: auto;
-  margin-right: auto;">
-
-<img class="topSlides" src="imagesS/band3.webp" style="width:100%; padding-top: 25px;">
-<img class="topSlides" src="imagesS/band2.webp" style="width:100%; padding-top: 25px;">
-<img class="topSlides" src="imagesS/band.webp" style="width:100%; padding-top: 25px;">
-<img class="topSlides" src="imagesS/blueroom.webp" style="width:100%; padding-top: 10px;">
-<img class="topSlides" src="imagesS/jacobcole.webp" style="width:100%; padding-top: 25px;">
-
-
-
-
-
-</div>
+        <div class="media-grid" style="flex-direction: column; align-items: center; margin-top: 3rem; gap: 3rem;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6565.132011176665!2d-120.46957322738828!3d34.64040611539924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec1fb523d09f7b%3A0x581022fc19e994a!2sStages%20Rehearsal%20Studios!5e0!3m2!1sen!2sus!4v1648371435570!5m2!1sen!2sus" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <img src="imagesS/bluedoor.png" alt="Stages Entrance Door" style="max-width:450px; width:100%; height:auto; border-radius: 6px;">
+        </div>
+    </section>
+</main>
 
 <script>
-var myIndex = 0;
-carousel();
+    // Top Cover Carousel Script
+    var myIndex = 0;
+    carousel();
 
-function carousel() {
-    var i;
-    var x = document.getElementsByClassName("topSlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";  
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("topSlides");
+        for (i = 0; i < x.length; i++) {
+           x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 3000);
     }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}    
-    x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 3000); // Change image every 3 seconds
-}
+
+    // Merch Slideshow Gallery Script
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+      }
+      for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+
+    // Mobile Hamburger Toggle Script
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    }
+
+    const navLink = document.querySelectorAll(".nav-link");
+    navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+    function closeMenu() {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }
 </script>
 
-              
-
-</div>
-<!--END OF IMG SLIDE SHOW AT THE TOP (LMH,CF) -->
-
-  
-<p></p>
-  
-  
-<div class="backgroundPurple"><p></p><h2><a name="videos">VIDEO</h2><p></p>
-
-<div style="text-align: center; color: yellow;">~VIDEOS FILLMED AT STAGES~
-</div>
-
-  
-  <!--Youtube Video Reel-->
-  
-<div style="text-align: center;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/9PxT79ajvcc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
-    
-    
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/hj38V_JO2yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-<br><br><br><br>
-</div>
-  </div>
-</div>
-  <p></p>
-    
-  
-  
-<div class="backgroundPurple"><h2><a name="rec">RECORDING</h2>
-  <div style="text-align: center; color: yellow;">~WE DO STUDIO RECORDING SESSIONS~
-</div>
-
-
-
-
-  
-    
-  <!-- bandcamp-->
-
-
-  <div class="center">
-  <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/"seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
-  </div>
-
-  <p></p>
-  
-  
-
-
-
-<div class="center">
-
-  <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
-  </div>
-  <p></p>
-
-
-  
-      <!-- reverbnation-->
-    <div class="center">
-    <iframe width="600px" height="350px" scrolling="no" frameborder="no" src="https://www.reverbnation.com/widget_code/html_widget/artist_3154108?widget_id=55&pwc[included_songs]=1&context_type=page_object&spoid=artist_3154108&pwc[size]=small" ></iframe>
-    </div>
-  
-    <p></p>
-  
-</div>
-  <p></p>
-
-    
-  
-  
-
-  
-        <!--===============Start of "ART SECTION" HTML===============-->
-  <!--===============Start of "ART SECTION" HTML===============-->  
-
-
-
-<div class="backgroundPurple"><h2><a name="merch">MERCH</h2>
-  <div class="center">
-  
- <!-- =MERCH LINKS= -->
-
-    <!-- Rarible -->
-    
-<div>
-    COMING SOON!!
-</div>
-
-<br></br>
-  
-<p><p>
-
-<!--============================Start of Art Slide HTML=================================-->
-
-
-<div class="slideshow-container">
-
-<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-
-<div class="mySlides fade">
-  <div class="numbertext">1 / 10</div>
-  <img class="fit" src="imagesS/merch/ritual.png" style="width:100%">
-  <div class="text">Glitch</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">2 / 10</div>
-  <img class="fit" src="imagesS/merch/ritual.png" style="width:100%">
-  <div class="text">Ritual</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 10</div>
-  <img class="fit" src="imagesS/cap.png" style="width:100%">
-  <div class="text">Captive</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">4 / 10</div>
-  <img class="fit" src="imagesS/kneel before zod cy BLACK glass GLASS TUBE.png" style="width:100%">
-  <div class="text">Arrival </div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">5 / 10</div>
-  <img class="fit" src="imagesS/3.png" style="width:100%">
-  <div class="text">Alone Togheter</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">6 / 10</div>
-  <img class="fit" src="imagesS/kneel before zod cy glass.png" style="width:100%">
-  <div class="text">Signals</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">7 / 10</div>
-  <img class="fit" src="imagesS/untitled2.png" style="width:100%">
-  <div class="text">Sorted</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">8 / 10</div>
-  <img class="fit" src="imagesS/Wide angle gun show wild3.jpg" style="width:100%">
-  <div class="text">Hand it Over</div>
-</div>
-<div class="mySlides fade">
-  <div class="numbertext">9 / 10</div>
-  <img class="fit" src="imagesS/rabit.jpg" style="width:100%">
-  <div class="text">Jillalope</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">10 / 10</div>
-  <img class="fit" src="imagesS/oh dear.jpg" style="width:100%">
-  <div class="text">Oh Dear!</div>
-</div>
-
-
-
-
-
-
-</div>
-<br>
-
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-  <span class="dot" onclick="currentSlide(4)"></span> 
-  <span class="dot" onclick="currentSlide(5)"></span> 
-  <span class="dot" onclick="currentSlide(6)"></span> 
-  <span class="dot" onclick="currentSlide(7)"></span> 
-  <span class="dot" onclick="currentSlide(8)"></span> 
-  <span class="dot" onclick="currentSlide(9)"></span> 
-  <span class="dot" onclick="currentSlide(10)"></span> 
-
-</div>
-
-<!--End of ART Slide  html-->
-
-<!--Start of ART Slide  Java -->
-
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
-
-
-
-<!--=========================End  of ART slide  HTML and Java ======================================================-->
-
-
-  </div>
-  </div>
-  </div>
-  
-  <p></p>
-  
-  
-  
-  
-<div class="backgroundPurple"><h2><a name="comedy">COMEDY</h2>
-
-  
-<div class="center">
-
-
-     <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcasey.fera%2Fposts%2Fpfbid02Yk5BYoj7s2hxDd7CwLKNg9WECrJxik2zkV6ihz7wmGeASqVLBaSGTYkuByfh3PpJl&show_text=true&width=500" width="500" height="653" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-
-     <div class="center">
-    
-<iframe src="https://www.eventbrite.com/e/first-friday-funnies-tickets-510154645277" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-    
-<p></p>
-    
-    CALL FOR BOOKINGS
-    </div>
-
-  </div>
-
-  </div>
-  
-
-
-
-<p></p>
-  
-<div class="backgroundPurple"><h2><a name="booking">BOOKING</h2>
-  
-  <div class="center">
-    
-  <div class="INFO">  
-    <h2>
-
-
-      STAGES
-REHEARSAL PRICING
-<p></p>
-Minimum of 60$ just to open the door. You can stay up to 4 hours at that rate. <p></p>
-Anything after that is $10 an hour extra. <p></p>
-
-If you want to do 1 day a week and pay in advance for the month, it will be $200, which works out to be $50 per session (4 4 hour sessions per month). <p></p>
-
-If you have drum or bass we can do weekends anytime, but weekdays only after 3pm for noise ordinance. Quieter acoustic practice/shows are fine anytime. 
-
-
-
-
-    </h2>
-  </div>
-    
-    <div class="areweokay">
-      
-  
-    <div class="PDS">
-    <br>
-     <br>
-     </div>
-    </div>
-  </div>
-<p></p>
-<div class="center"><h3>
-contact:</h3<br><h2>
-
-<div>
- <center>
-<table style="border: 1px solid black;">
-  <tr>
-    <th><img src="imagesS/caseyfera.webp" alt="Casey Image" width="80"></th>
-        <th VALIGN=TOP style="text-align: left; border: 10px solid #ce7f87;">CASEY<br>(805)591-4839<br>casey@stageslompoc.com</th>
-    <th>          </th>
-<tr>
-    <td></td>
-    <td></td>
-  <td</td>
-
-  </tr>
-</table>
-</center>
-</div>
-
-
-
-
-
-  </tr>
-</table>
-</center>
-</div>
-<p></P>
-  <div class="center">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6565.132011176665!2d-120.46957322738828!3d34.64040611539924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ec1fb523d09f7b%3A0x581022fc19e994a!2sStages%20Rehearsal%20Studios!5e0!3m2!1sen!2sus!4v1648371435570!5m2!1sen!2sus" width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-
-<p></P>
-
-<div class="center">
-<img src="imagesS/bluedoor.png" width="450">
-</div>
-
-
-
-  
-
-<script>    
-const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
-
-hamburger.addEventListener("click", mobileMenu);
-
-function mobileMenu() {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-}
-
-
-const navLink = document.querySelectorAll(".nav-link");
-
-navLink.forEach(n => n.addEventListener("click", closeMenu));
-
-function closeMenu() {
-    hamburger.classList.remove("active");
-    navMenu.classList.remove("active");
-}
-</script>
-
-
-
-
-  
-  
-  
-  
-
-
-
-
+</body>
+</html>
