@@ -129,14 +129,29 @@
             background-color: var(--text-white);
         }
 
-        /* Main Content Layout Adjustments (Replaces all those brutal <br> tags) */
+        /* Main Content Layout Adjustments */
         main {
             max-width: 1000px;
             margin: 100px auto 40px auto; /* 100px top margin keeps header from blocking content */
             padding: 0 2rem;
         }
 
-        /* Hero / Branding Area */
+        /* Hero Promo Flyer Area */
+        .promo-banner {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .promo-banner img {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            border: 1px solid #332a40;
+        }
+
+        /* Logo Branding Area */
         .logo-container {
             text-align: center;
             margin-bottom: 4rem;
@@ -379,6 +394,10 @@
 </header>
 
 <main>
+    <div class="promo-banner">
+        <img src="imagesS/promo_flyer.jpg" alt="Rock Your Next Project - Lompoc's Premier Creative Studio Flyer"/>
+    </div>
+
     <div class="logo-container">
         <img src="imagesS/logo.png" alt="Stages Rehearsal Studio Logo"/>
     </div>
