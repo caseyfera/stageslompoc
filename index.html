@@ -132,18 +132,27 @@
         /* Main Content Layout Adjustments */
         main {
             max-width: 1000px;
-            margin: 100px auto 40px auto; /* 100px top margin keeps header from blocking content */
+            margin: 110px auto 40px auto;
             padding: 0 2rem;
         }
 
-        /* Hero Promo Flyer Area */
-        .promo-banner {
-            text-align: center;
+        /* Split Hero Landing Styling */
+        .hero-split {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
             margin-bottom: 4rem;
         }
 
-        .promo-banner img {
-            max-width: 600px;
+        .hero-left, .hero-right {
+            flex: 1;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-flyer {
+            max-width: 480px;
             width: 100%;
             height: auto;
             border-radius: 8px;
@@ -151,17 +160,66 @@
             border: 1px solid #332a40;
         }
 
-        /* Logo Branding Area */
-        .logo-container {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .logo-container img {
-            max-width: 350px;
+        .hero-logo {
+            max-width: 320px;
             width: 100%;
             height: auto;
+            margin-bottom: 2rem;
             filter: drop-shadow(0 0 15px rgba(29, 132, 213, 0.4));
+        }
+
+        .hero-quick-info {
+            background-color: var(--card-purple);
+            border: 1px solid #2d2638;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero-location {
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-price-lead {
+            font-size: 1.6rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--link-blue);
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 1.2rem 3rem;
+            border-radius: 4px;
+            transition: background 0.2s, transform 0.2s;
+            text-transform: uppercase;
+        }
+
+        .cta-btn:hover {
+            background-color: #2596ed;
+            transform: translateY(-2px);
+        }
+
+        /* GoFundMe Frame Refinement */
+        .gfm-container {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid #222;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 4rem;
         }
 
         /* Sections Styling */
@@ -206,10 +264,11 @@
         /* Main Top Carousel Settings */
         .carousel-container {
             max-width: 500px;
-            margin: 0 auto 3rem auto;
+            margin: 0 auto 4rem auto;
             background: #000;
             border-radius: 6px;
             overflow: hidden;
+            border: 1px solid #222;
         }
 
         .topSlides {
@@ -329,7 +388,14 @@
         }
 
         /* Responsive Breakpoints */
-        @media only screen and (max-width: 870px) {
+        @media only screen and (max-width: 850px) {
+            .hero-split {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            .hero-flyer {
+                max-width: 440px;
+            }
             .hamburger {
                 display: block;
             }
@@ -394,16 +460,22 @@
 </header>
 
 <main>
-  <div class="promo-banner">
-    <img src="imagesS/667661470_1456835682804096_4836916083364324086_n.jpg" alt="Rock Your Next Project - Lompoc's Premier Creative Studio Flyer"/>
-</div>
+    <div class="hero-split">
+        <div class="hero-left">
+            <img src="imagesS/667661470_1456835682804096_4836916083364324086_n.jpg" alt="Rock Your Next Project - Lompoc's Premier Creative Studio Flyer" class="hero-flyer">
+        </div>
+        <div class="hero-right">
+            <img src="imagesS/logo.png" alt="Stages Rehearsal Studio Logo" class="hero-logo"/>
+            <div class="hero-quick-info">
+                <p class="hero-location">📍 118 North I Street, Lompoc, CA</p>
+                <p class="hero-tagline">Rehearsal Space • Event Space • Video Production • Photography • Sound Recording</p>
+                <p class="hero-price-lead">Practice slots start at just <strong>$60</strong> for 4 hours</p>
+                <a href="#booking" class="cta-btn">Book Your Studio Time</a>
+            </div>
+        </div>
     </div>
 
-    <div class="logo-container">
-        <img src="imagesS/logo.png" alt="Stages Rehearsal Studio Logo"/>
-    </div>
-
-    <div style="margin-bottom: 4rem;">
+    <div class="gfm-container">
         <div class="gfm-embed" data-url="https://www.gofundme.com/f/keep-the-music-alive-at-stages-rehearsal-studios/widget/large?sharesheet=undefined&attribution_id=sl:03a80993-f799-42e4-a0d2-f5e718a06073"></div>
         <script defer src="https://www.gofundme.com/static/js/embed.js"></script>
     </div>
@@ -433,8 +505,8 @@
         <h2>Recording</h2>
         <div class="section-subtitle">~ WE DO STUDIO RECORDING SESSIONS ~</div>
         <div class="media-grid" style="flex-direction: column; align-items: center;">
-            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
-            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=ffffff/linkcol=7137dc/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=766996552/size=large/bgcol=1e1b26/linkcol=EFDA03/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
+            <iframe style="border: 0; width: 350px; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/track=1744206545/size=large/bgcol=1e1b26/linkcol=EFDA03/tracklist=false/artwork=small/transparent=true/" seamless><a href="http://caseyfera.bandcamp.com/track/body-rock">Body Rock by Casey Fera</a></iframe>
             <iframe width="100%" style="max-width: 600px;" height="350px" scrolling="no" frameborder="no" src="https://www.reverbnation.com/widget_code/html_widget/artist_3154108?widget_id=55&pwc[included_songs]=1&context_type=page_object&spoid=artist_3154108&pwc[size]=small"></iframe>
         </div>
     </section>
